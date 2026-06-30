@@ -243,7 +243,7 @@
         </div>
         <div class="header-text">
             <h1 data-lang="name">Yevheniia Babenko</h1>
-            <div class="title" data-lang="title">Ph.D. · Senior Research Fellow · Cybernetics &amp; AI</div>
+            <div class="title" data-lang="title">Ph.D. · Senior Research Fellow · Cybernetics &amp; Biology</div>
             <div class="contact">
                 <span><i class="fas fa-envelope"></i> <a href="mailto:sarahan@nas.gov.ua">sarahan@nas.gov.ua</a></span>
                 <span><i class="fas fa-envelope"></i> <a href="mailto:evb@post.cz">evb@post.cz</a></span>
@@ -339,10 +339,9 @@
 </div>
 
 <!-- ========================================== -->
-<!-- === ДВОМОВНИЙ ЧАТ-БОТ (синхронізований) === -->
+<!-- === ЧАТ-БОТ (повністю робочий) === -->
 <!-- ========================================== -->
 <style>
-    /* Стилі чат-бота (без змін) – ті ж, що й раніше */
     #chat-toggle {
         position: fixed;
         bottom: 24px;
@@ -514,13 +513,235 @@
 
 <script>
     // ============================================================
+    //  БАЗА ЗНАНЬ (ПОВНА)
+    // ============================================================
+    const knowledgeBase = [
+        {
+            keywords_uk: ['привіт', 'здоров', 'добрий день', 'доброго дня'],
+            keywords_en: ['hello', 'hi', 'hey'],
+            response_uk: 'Вітаю! Я — віртуальний асистент Євгенії Бабенко. Чим можу допомогти? Запитайте про мої дослідження, проєкт ERC або публікації.',
+            response_en: 'Hello! I am the virtual assistant of Yevheniia Babenko. How can I help? Ask about my research, ERC project, or publications.'
+        },
+        {
+            keywords_uk: ['хто ви', 'хто ти', 'про себе', 'біографія'],
+            keywords_en: ['who are you', 'about you', 'biography'],
+            response_uk: 'Мене звати Євгенія Бабенко, я доктор наук, старший науковий співробітник Інституту кібернетики ім. В.М. Глушкова НАН України. Моя спеціалізація — сильний ШІ, нейро-символічні системи, обчислювальна біологія.',
+            response_en: 'My name is Yevheniia Babenko, Ph.D., Senior Research Fellow at the V.M. Glushkov Institute of Cybernetics. My specialization is Strong AI, neuro-symbolic systems, computational biology.'
+        },
+        {
+            keywords_uk: ['бачення', 'наукове бачення', 'мета', 'vision'],
+            keywords_en: ['vision', 'research vision', 'goal'],
+            response_uk: 'Моє наукове бачення — побудувати розподілену сенсорну цифрову інфраструктуру для моделювання біологічних систем. Я об\'єдную нейро-символічний ШІ, біо-сенсори та реляційні представлення, щоб зробити біологію передбачувальною.',
+            response_en: 'My research vision is to build a distributed sensor-based digital infrastructure for biological system modelling. I integrate neuro-symbolic AI, bio-sensors, and relational representations to make biology predictive.'
+        },
+        {
+            keywords_uk: ['сильний ші', 'штучний інтелект', 'agi', 'цифровий організм'],
+            keywords_en: ['strong ai', 'artificial intelligence', 'agi', 'digital organism'],
+            response_uk: 'Я розробляю концепцію цифрового організму як моделі для сильного ШІ (AGI). Це біологічно натхненна архітектура, що поєднує символьне та суб-символьне навчання. Одна з ключових публікацій — «The Path to Artificial General Intelligence Through the Concept of a Digital Organism» (2025).',
+            response_en: 'I am developing the concept of a digital organism as a model for Strong AI (AGI). This is a biologically inspired architecture that combines symbolic and sub-symbolic learning. One key publication is «The Path to Artificial General Intelligence Through the Concept of a Digital Organism» (2025).'
+        },
+        {
+            keywords_uk: ['керована біологія', 'передбачувальна біологія', 'цифрові двійники'],
+            keywords_en: ['controlled biology', 'predictive biology', 'digital twins'],
+            response_uk: 'Управляема біологія — це створення передбачувальних моделей живих систем за допомогою цифрових технологій. Я працюю над інфраструктурою для цифрових двійників рослин і тварин, щоб прогнозувати зміни в реальному часі.',
+            response_en: 'Controlled biology means creating predictive models of living systems using digital technologies. I work on infrastructure for digital twins of plants and animals to predict changes in real time.'
+        },
+        {
+            keywords_uk: ['erc', 'advanced grant', 'грант', 'фінансування', 'host'],
+            keywords_en: ['erc', 'advanced grant', 'grant', 'funding', 'host'],
+            response_uk: 'Я готую заявку на ERC Advanced Grant 2026 (дедлайн 27 серпня). Шукаю host-інституцію в Європі (Чехія, Швейцарія, Німеччина). Якщо ви зацікавлені, напишіть мені на email: sarahan@nas.gov.ua',
+            response_en: 'I am preparing an application for ERC Advanced Grant 2026 (deadline 27 August). I am looking for a host institution in Europe (Czechia, Switzerland, Germany). If interested, please email me at sarahan@nas.gov.ua'
+        },
+        {
+            keywords_uk: ['публікації', 'статті', 'наукові роботи'],
+            keywords_en: ['publications', 'papers', 'articles'],
+            response_uk: 'Мої публікації доступні в розділі "Вибрані публікації" на цьому сайті, а також у PDF-файлі для завантаження. Останні ключові роботи: «Cognitive Interaction Layers for Neuro-Symbolic AI» (2025), «Abstract Biology» (2025).',
+            response_en: 'My publications are available in the "Selected Publications" section on this site, as well as in the PDF download. Recent key works: «Cognitive Interaction Layers for Neuro-Symbolic AI» (2025), «Abstract Biology» (2025).'
+        },
+        {
+            keywords_uk: ['патенти', 'винаходи'],
+            keywords_en: ['patents', 'inventions'],
+            response_uk: 'Я є співавтором 6 патентів у галузі сенсорних технологій, діагностики рослин та інформаційних систем. Основні: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.',
+            response_en: 'I am a co-author of 6 patents in sensor technologies, plant diagnostics, and information systems. Main ones: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.'
+        },
+        {
+            keywords_uk: ['нагороди', 'премії', 'визнання'],
+            keywords_en: ['awards', 'prizes', 'recognition'],
+            response_uk: 'Мої дослідження відзначені премією НАН України для молодих учених (2006), премією НАН України (2013), першим місцем на Sikorsky Challenge (2013), стипендіями Кабінету Міністрів та Президента України.',
+            response_en: 'My research has been recognized with the NASU Award for Young Scientists (2006), the NASU Young Scientist Research Prize (2013), first prize at Sikorsky Challenge (2013), and scholarships from the Cabinet of Ministers and the President of Ukraine.'
+        },
+        {
+            keywords_uk: ['контакти', 'зв\'язатися', 'email', 'пошта'],
+            keywords_en: ['contact', 'email', 'reach out'],
+            response_uk: 'Ви можете зв\'язатися зі мною за email: sarahan@nas.gov.ua або evb@post.cz. Я також доступна в LinkedIn і ResearchGate.',
+            response_en: 'You can reach me by email: sarahan@nas.gov.ua or evb@post.cz. I am also available on LinkedIn and ResearchGate.'
+        },
+        {
+            keywords_uk: ['сенсори', 'біосенсори', 'флуориметр', 'floratest'],
+            keywords_en: ['sensors', 'biosensors', 'fluorometer', 'floratest'],
+            response_uk: 'Я розробила портативний флуориметр «Floratest» для діагностики рослин за флуоресценцією хлорофілу. Цей пристрій пройшов випробування на виноградниках і став основою для моїх проєктів з розподілених сенсорних мереж.',
+            response_en: 'I developed the portable fluorometer «Floratest» for plant diagnostics via chlorophyll fluorescence. This device was tested in vineyards and became the foundation for my projects on distributed sensor networks.'
+        }
+    ];
+
+    // ============================================================
+    //  ДОПОМІЖНІ ФУНКЦІЇ
+    // ============================================================
+    function detectLanguage(text) {
+        const ukrainianChars = /[а-щА-ЩЬьЮюЯяІіЄєЇїҐґ]/;
+        return ukrainianChars.test(text) ? 'uk' : 'en';
+    }
+
+    function getBotResponse(userText, lang) {
+        const lower = userText.toLowerCase().trim();
+        if (!lower) return lang === 'uk' ? 'Напишіть, будь ласка, ваше запитання.' : 'Please type your question.';
+
+        const words = lower.replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 1);
+        const keywordsKey = lang === 'uk' ? 'keywords_uk' : 'keywords_en';
+        const responseKey = lang === 'uk' ? 'response_uk' : 'response_en';
+
+        let bestMatch = null;
+        let bestScore = 0;
+
+        for (const entry of knowledgeBase) {
+            const keywords = entry[keywordsKey] || [];
+            let score = 0;
+            for (const kw of keywords) {
+                if (lower.includes(kw.toLowerCase())) {
+                    score += 5;
+                } else {
+                    const kwWords = kw.toLowerCase().split(/\s+/);
+                    for (const w of words) {
+                        if (kwWords.some(kwW => kwW.includes(w) || w.includes(kwW))) {
+                            score += 1;
+                        }
+                    }
+                }
+            }
+            if (score > bestScore) {
+                bestScore = score;
+                bestMatch = entry[responseKey];
+            }
+        }
+
+        if (bestScore > 2 && bestMatch) {
+            return bestMatch;
+        } else {
+            return lang === 'uk'
+                ? 'Вибачте, не знайшов точної відповіді. Напишіть мені на email: sarahan@nas.gov.ua або evb@post.cz.'
+                : 'Sorry, I could not find an exact answer. Please email me at sarahan@nas.gov.ua or evb@post.cz.';
+        }
+    }
+
+    // ============================================================
+    //  УПРАВЛІННЯ ІНТЕРФЕЙСОМ
+    // ============================================================
+    const toggleBtn = document.getElementById('chat-toggle');
+    const closeBtn = document.getElementById('chat-close');
+    const windowEl = document.getElementById('chat-window');
+    const messagesEl = document.getElementById('chat-messages');
+    const inputEl = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send');
+    const titleEl = document.getElementById('chat-title');
+
+    let currentLang = 'en';
+
+    function updateChatUI(lang) {
+        if (lang === 'uk') {
+            titleEl.textContent = '🤗 Запитайте про мою роботу';
+            inputEl.placeholder = 'Напишіть питання...';
+            sendBtn.textContent = 'Надіслати';
+        } else {
+            titleEl.textContent = '🤖 Ask about my work';
+            inputEl.placeholder = 'Type your question...';
+            sendBtn.textContent = 'Send';
+        }
+    }
+
+    function appendMessage(text, sender) {
+        const div = document.createElement('div');
+        div.className = sender === 'user' ? 'msg-user' : 'msg-bot';
+        const span = document.createElement('span');
+        span.textContent = text;
+        div.appendChild(span);
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function handleSend() {
+        const text = inputEl.value.trim();
+        if (!text) return;
+        appendMessage(text, 'user');
+        inputEl.value = '';
+        inputEl.disabled = true;
+
+        const lang = detectLanguage(text);
+        currentLang = lang;
+        updateChatUI(lang);
+
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'msg-typing';
+        typingDiv.textContent = lang === 'uk' ? 'Бот друкує...' : 'Bot is typing...';
+        messagesEl.appendChild(typingDiv);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+
+        setTimeout(() => {
+            if (typingDiv.parentNode) typingDiv.remove();
+            const reply = getBotResponse(text, lang);
+            appendMessage(reply, 'bot');
+            inputEl.disabled = false;
+            inputEl.focus();
+        }, 600 + Math.random() * 400);
+    }
+
+    // ---- Події ----
+    toggleBtn.addEventListener('click', () => {
+        const isOpen = windowEl.classList.toggle('open');
+        if (isOpen) {
+            inputEl.focus();
+            if (messagesEl.children.length === 0) {
+                const lang = document.documentElement.lang === 'uk' ? 'uk' : 'en';
+                const greeting = lang === 'uk'
+                    ? 'Вітаю! Я — віртуальний асистент Євгенії Бабенко. Запитайте про мої дослідження, проєкт ERC або публікації.'
+                    : 'Hello! I am the virtual assistant of Yevheniia Babenko. Ask me about my research, ERC project, or publications.';
+                appendMessage(greeting, 'bot');
+                updateChatUI(lang);
+            }
+        }
+    });
+
+    closeBtn.addEventListener('click', () => {
+        windowEl.classList.remove('open');
+    });
+
+    sendBtn.addEventListener('click', handleSend);
+    inputEl.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSend();
+    });
+
+    // Закриття по кліку поза чатом
+    document.addEventListener('click', (e) => {
+        const isChat = windowEl.contains(e.target) || toggleBtn.contains(e.target);
+        if (!isChat && windowEl.classList.contains('open')) {
+            windowEl.classList.remove('open');
+        }
+    });
+
+    // Ініціалізація при завантаженні
+    document.addEventListener('DOMContentLoaded', () => {
+        const lang = document.documentElement.lang === 'uk' ? 'uk' : 'en';
+        updateChatUI(lang);
+        console.log('✅ Чат-бот завантажено з базою знань!');
+    });
+</script>
+    // ============================================================
     // 1. ПЕРЕКЛАДИ ДЛЯ ВСЬОГО САЙТУ
     // ============================================================
     const translations = {
         uk: {
             name: 'Євгенія Бабенко',
-            title: 'Доктор наук · Старший науковий співробітник · Кібернетика та ШІ',
-            location: 'Чехія',
+            title: 'Доктор філософії · Старший науковий співробітник · Кібернетика та Біологія',
+            location: 'Україна',
             'vision-title': 'Наукове бачення',
             'vision-text': 'Моя дослідницька програма спрямована на створення <strong>сильного ШІ через біологічно натхненні архітектури</strong> та забезпечення <strong>керованої, передбачувальної біології за допомогою цифрових інфраструктур</strong>. Я бачу замкнуту парадигму, де розподілені біосенсорні мережі передають дані в реальному часі до нейро-символічних систем ШІ, які, у свою чергу, моделюють і контролюють біологічні процеси – від стресових реакцій рослин до поведінки тварин. Я пропоную створити <strong>розподілену сенсорну цифрову інфраструктуру для моделювання біологічних систем</strong>, що інтегрує реляційні представлення, мнемонічні інтерфейси та концепцію цифрового організму, щоб перетворити біологію з описової науки на інженерну дисципліну.',
             'contrib-title': 'Ключові наукові досягнення',
