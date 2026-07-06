@@ -139,7 +139,7 @@
         }
         .lang-switcher button:not(.active):hover { background: #d0d9e6; }
 
-        /* --- Основные стили --- */
+        /* --- Основні стилі --- */
         h2 {
             font-size: 1.8rem;
             font-weight: 600;
@@ -218,7 +218,7 @@
             border-bottom: 1px solid var(--accent);
         }
 
-        /* --- Фильтры публикаций --- */
+        /* --- Фільтри публикацій --- */
         .pub-filters {
             display: flex;
             flex-wrap: wrap;
@@ -268,7 +268,7 @@
             background: #1a3f66;
         }
 
-        /* --- Адаптив --- */
+        /* --- Адаптів --- */
         @media (max-width: 650px) {
             .container { padding: 1.5rem; }
             .header { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
@@ -460,10 +460,14 @@
         My vision was ahead of its time. When I first proposed the integration of biosensors into wireless networks and control via expert systems in the late 2000s, these ideas were met with skepticism. Today, these concepts are recognized as essential for precision agriculture, environmental monitoring, and digital biology. My early work on portable fluorimetry (2006–2008) and distributed sensor networks (2013–2016) laid the foundation for a research direction that has been developing at the V.M. Glushkov Institute of Cybernetics for almost two decades. The global network for automatic knowledge taking (UA 89025, 2014) was the first step toward what I now develop as cognitive AI architectures. This continuity of thought reflects my long-term commitment to building intelligent systems that truly understand and model complex biological and cognitive processes.
     </p>
 
-    <!-- ===== KEY CONTRIBUTIONS ===== -->
+    <!-- ===== KEY CONTRIBUTIONS (с добавлением Винахід 2008) ===== -->
     <h2 data-lang="contrib-title">Key Scientific Contributions</h2>
     <ul class="contrib-list">
-        <li data-lang="contrib-1"><strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics <span class="tag">NASU Prize 2007</span></li>
+        <li data-lang="contrib-1">
+            <strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics 
+            <span class="tag">NASU Prize 2007</span>
+            <span class="tag" style="background: #d4edda; color: #155724;">Winner of Invention 2008</span>
+        </li>
         <li data-lang="contrib-2"><strong>Patent UA 86679</strong> – method for plant species identification using spectral data & machine learning</li>
         <li data-lang="contrib-3"><strong>STCU Project #5219</strong> (PI) – wireless intelligent biosensors for precision agriculture</li>
         <li data-lang="contrib-4"><strong>STCU Project #6064</strong> (PI) – distributed smart sensor network for environmental monitoring</li>
@@ -542,7 +546,7 @@
         </li>
     </ul>
 
-    <!-- ===== PUBLICATIONS ===== -->
+    <!-- ===== PUBLICATIONS (с фильтрами) ===== -->
     <h2 data-lang="pubs-title">Selected Publications</h2>
     <div class="pub-filters">
         <button class="active" data-filter="all">All</button>
@@ -665,7 +669,7 @@
         <li><a href="https://zenodo.org" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">Zenodo – European Research Data Repository</a></li>
     </ul>
 
-    <!-- ===== тлачитко PDF ===== -->
+    <!-- ===== КНОПКА PDF ===== -->
     <div style="text-align: center; margin-top: 2rem;">
         <button class="pdf-btn" id="download-pdf-btn"><i class="fas fa-file-pdf"></i> <span data-lang="pdf-btn">Save page as PDF</span></button>
     </div>
@@ -700,12 +704,12 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- === Бібліотеки та СКРіпти === -->
+<!-- === БіБЛіОТЕКі і СКРіПТи === -->
 <!-- ============================================================ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 // ============================================================
-//  транслейт
+//  переклади
 // ============================================================
 const translations = {
     en: {
@@ -716,7 +720,7 @@ const translations = {
         'vision-text': 'My research programme aims to establish <strong>Strong AI through biologically inspired architectures</strong> and to enable <strong>controlled, predictable biology via digital infrastructures</strong>. I envision a closed‑loop paradigm where distributed biosensor networks feed real‑time data into neuro‑symbolic AI systems, which in turn model and control biological processes — from plant stress responses to animal behaviour. I propose to create a <strong>distributed sensor‑based digital infrastructure for biological system modelling</strong>, integrating relational representations, Cognitive Interaction Layers for Neuro‑Symbolic AI, and the concept of a digital organism, to transform biology from a descriptive science into an engineering discipline.',
         'vision-pioneering': 'My vision was ahead of its time. When I first proposed the integration of biosensors into wireless networks and control via expert systems in the late 2000s, these ideas were met with skepticism. Today, these concepts are recognized as essential for precision agriculture, environmental monitoring, and digital biology. My early work on portable fluorimetry (2006–2008) and distributed sensor networks (2013–2016) laid the foundation for a research direction that has been developing at the V.M. Glushkov Institute of Cybernetics for almost two decades. The global network for automatic knowledge taking (UA 89025, 2014) was the first step toward what I now develop as cognitive AI architectures. This continuity of thought reflects my long-term commitment to building intelligent systems that truly understand and model complex biological and cognitive processes.',
         'contrib-title': 'Key Scientific Contributions',
-        'contrib-1': '<strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics <span class="tag">NASU Prize 2007</span>',
+        'contrib-1': '<strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics <span class="tag">NASU Prize 2007</span> <span class="tag" style="background: #d4edda; color: #155724;">Winner of Invention 2008</span>',
         'contrib-2': '<strong>Patent UA 86679</strong> – method for plant species identification using spectral data & machine learning',
         'contrib-3': '<strong>STCU Project #5219</strong> (PI) – wireless intelligent biosensors for precision agriculture',
         'contrib-4': '<strong>STCU Project #6064</strong> (PI) – distributed smart sensor network for environmental monitoring',
@@ -783,7 +787,7 @@ const translations = {
         'vision-text': 'Моя дослідницька програма спрямована на створення <strong>сильного ШІ через біологічно натхненні архітектури</strong> та забезпечення <strong>керованої, передбачуваної біології за допомогою цифрових інфраструктур</strong>. Я бачу замкнуту парадигму, де розподілені біосенсорні мережі передають дані в реальному часі до нейро-символічних систем ШІ, які, у свою чергу, моделюють і контролюють біологічні процеси — від стресових реакцій рослин до поведінки тварин. Я пропоную створити <strong>розподілену сенсорну цифрову інфраструктуру для моделювання біологічних систем</strong>, що інтегрує реляційні представлення, когнітивні шари взаємодії для нейро-символічного ШІ (Cognitive Interaction Layers for Neuro-Symbolic AI) та концепцію цифрового організму, щоб перейти від описової біології до інженерної дисципліни.',
         'vision-pioneering': 'Моє бачення випереджає свій час. Коли я вперше запропонувала інтеграцію біосенсорів до бездротових мереж та керування за рахунок експертних систем наприкінці 2000-х, ці ідеї викликали скепсис. Сьогодні ці концепції визнані невід\'ємними для точного землеробства, екологічного моніторингу та цифрової біології. Мої ранні роботи з портативної флуориметрії (2006–2008) та розподілених сенсорних мереж (2013–2016) заклали основу для наукового напрямку, який розвивається в Інституті кібернетики ім. В.М. Глушкова вже майже два десятиліття. Глобальна мережа автоматичного отримання знань (UA 89025, 2014) стала першим кроком до того, що зараз знайшло свій розвиток як архітектури когнітивного ШІ. Ця спадкоємність думки відображає мою довгострокову відданість створенню інтелектуальних систем, які дійсно розуміють і моделюють складні біологічні та когнітивні процеси.',
         'contrib-title': 'Ключові наукові досягнення',
-        'contrib-1': '<strong>Портативний флуориметр «Floratest»</strong> – перший портативний пристрій для діагностики виноградників за флуоресценцією хлорофілу <span class="tag">Премія НАНУ 2007</span>',
+        'contrib-1': '<strong>Портативний флуориметр «Floratest»</strong> – перший портативний пристрій для діагностики виноградників за флуоресценцією хлорофілу <span class="tag">Премія НАНУ 2007</span> <span class="tag" style="background: #d4edda; color: #155724;">Переможець Винахід 2008</span>',
         'contrib-2': '<strong>Патент UA 86679</strong> – метод ідентифікації видів рослин за спектральними даними та машинним навчанням',
         'contrib-3': '<strong>Проєкт STCU #5219</strong> (керівник) – бездротові інтелектуальні біосенсори для точного землеробства',
         'contrib-4': '<strong>Проєкт STCU #6064</strong> (керівник) – розподілена мережа розумних сенсорів для моніторингу довкілля',
@@ -845,7 +849,7 @@ const translations = {
 };
 
 // ============================================================
-//  БАЗА знань ДЛЯ ЧАТ-БОТА
+//  БАЗА ЗНАНЬ ДЛЯ FALLBACK запас
 // ============================================================
 let lastBotResponse = '';
 
@@ -919,14 +923,52 @@ const knowledgeBase = [
 ];
 
 // ============================================================
-//  ФУНКЦії
+//  НОВА ФУНКЦіЯ-АСіСТЕНТ
 // ============================================================
-function detectLanguage(text) {
-    const ukrainianChars = /[а-щА-ЩЬьЮюЯяІіЄєЇїҐґ]/;
-    return ukrainianChars.test(text) ? 'uk' : 'en';
+async function getBotResponse(userText, lang) {
+    const lower = userText.toLowerCase().trim();
+    if (!lower) {
+        return lang === 'uk' ? 'Напишіть, будь ласка, ваше запитання.' : 'Please type your question.';
+    }
+
+    try {
+        const prompt = lang === 'uk' 
+            ? `Ти персональний асистент дослідниці Євгенії Бабенко. Відповідай на питання про її роботу, сильний ШІ, біологію, сенсори, патенти, публікації, проєкти, нагороди. Відповідай українською мовою. Питання: ${userText}`
+            : `You are a personal assistant of Dr. Yevheniia Babenko. Answer questions about her work, Strong AI, biology, sensors, patents, publications, projects, awards. Answer in English. Question: ${userText}`;
+
+        const response = await fetch(
+            'https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1',
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    inputs: prompt,
+                    parameters: { max_new_tokens: 400, temperature: 0.7 }
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+        }
+
+        const data = await response.json();
+        let reply = data.generated_text || '';
+        if (reply.startsWith(prompt)) {
+            reply = reply.slice(prompt.length).trim();
+        }
+        if (!reply) throw new Error('Empty reply');
+        return reply;
+    } catch (error) {
+        console.warn('Hugging Face API error, using fallback:', error);
+        return fallbackResponse(userText, lang);
+    }
 }
 
-function getBotResponse(userText, lang) {
+// ============================================================
+//  ЗАПАсна функція стара логіка
+// ============================================================
+function fallbackResponse(userText, lang) {
     const lower = userText.toLowerCase().trim();
     if (!lower) return lang === 'uk' ? 'Напишіть, будь ласка, ваше запитання.' : 'Please type your question.';
 
@@ -964,17 +1006,25 @@ function getBotResponse(userText, lang) {
         answer = bestMatch;
     } else {
         answer = lang === 'uk'
-            ? 'Точної відповіді у локальній базі сайту немає. Напишіть, будь ласка: sarahan@nas.gov.ua або evb@post.cz.'
+            ? 'Точної відповіді у локальній базі немає. Напишіть, будь ласка: sarahan@nas.gov.ua або evb@post.cz.'
             : 'No exact answer was found in the local site knowledge base. Please email sarahan@nas.gov.ua or evb@post.cz.';
     }
 
     if (answer === lastBotResponse) {
         answer = lang === 'uk'
-            ? 'Це саме питання вже було опрацьовано. Спробуйте уточнити тему: публікації, патенти, ERC, Floratest, нагороди або контакти.'
-            : 'This topic was already answered. Try narrowing the question: publications, patents, ERC, Floratest, awards, or contact details.';
+            ? 'Це саме питання вже було опрацьовано. Спробуйте уточнити тему.'
+            : 'This topic was already answered. Try narrowing the question.';
     }
     lastBotResponse = answer;
     return answer;
+}
+
+// ============================================================
+//  допоміжні функції
+// ============================================================
+function detectLanguage(text) {
+    const ukrainianChars = /[а-щА-ЩЬьЮюЯяІіЄєЇїҐґ]/;
+    return ukrainianChars.test(text) ? 'uk' : 'en';
 }
 
 function setLanguage(lang) {
@@ -1019,6 +1069,9 @@ function appendMessage(text, sender) {
     messagesEl.scrollTop = messagesEl.scrollHeight;
 }
 
+// ============================================================
+//  відПРАВКА СООБЩЕНія асінх
+// ============================================================
 function handleSend() {
     const inputEl = document.getElementById('chat-input');
     const messagesEl = document.getElementById('chat-messages');
@@ -1036,9 +1089,9 @@ function handleSend() {
     messagesEl.appendChild(typingDiv);
     messagesEl.scrollTop = messagesEl.scrollHeight;
 
-    setTimeout(() => {
+    setTimeout(async () => {
         if (typingDiv.parentNode) typingDiv.remove();
-        const reply = getBotResponse(text, lang);
+        const reply = await getBotResponse(text, lang);
         appendMessage(reply, 'bot');
         inputEl.disabled = false;
         inputEl.focus();
@@ -1046,7 +1099,7 @@ function handleSend() {
 }
 
 // ============================================================
-//  Фільтри
+//  ФіЛЬТРи ПУБЛікацій
 // ============================================================
 function setupFilters() {
     const buttons = document.querySelectorAll('.pub-filters button');
@@ -1069,7 +1122,7 @@ function setupFilters() {
 }
 
 // ============================================================
-//  PDF 
+//  PDF ГЕНЕРАЦія
 // ============================================================
 function setupPdf() {
     const btn = document.getElementById('download-pdf-btn');
@@ -1088,7 +1141,7 @@ function setupPdf() {
 }
 
 // ============================================================
-//  ІНІЦІАЛІЗАЦІЯ
+//  ініціалізація
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
     // Язык
@@ -1139,17 +1192,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Фильтры
+    // Фільтри
     setupFilters();
 
     // PDF
     setupPdf();
 
-    console.log('✅ Сайт та чат-бот!');
+    console.log('✅ Сайт и чат-бот успешно загружены!');
 });
 </script>
 </body>
 </html>
+
 
 
 
