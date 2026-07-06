@@ -126,26 +126,11 @@
             color: #000;
         }
         p { margin-bottom: 1rem; }
-       ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-ul li {
-    padding: 0.4rem 0;
-    border-bottom: 1px solid #f0f0f0;
-}
-        .bullet-list {
-    list-style: disc;
-    padding-left: 1.5rem;
-    margin: 0.5rem 0;
-}
-
-.bullet-list li {
-    display: list-item;
-    border-bottom: none;
-    padding: 0.25rem 0;
-}
+        ul { list-style: none; padding-left: 0; }
+        ul li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
         .contrib-list li {
             padding-left: 0;
             border-bottom: none;
@@ -157,6 +142,16 @@ ul li {
             position: static;
             margin-right: 0.6rem;
             font-size: 1.2rem;
+        }
+        .bullet-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        .bullet-list li {
+            display: list-item;
+            border-bottom: none;
+            padding: 0.25rem 0;
         }
         .tag {
             display: inline-block;
@@ -235,7 +230,6 @@ ul li {
         <div class="lang-switcher">
             <button class="active" data-lang="en">EN</button>
             <button data-lang="uk">UA</button>
-            <button data-lang="cs">CS</button>
         </div>
     </div>
 
@@ -251,7 +245,7 @@ ul li {
     <!-- ===== KEY CONTRIBUTIONS ===== -->
     <h2 data-lang="contrib-title">Key Scientific Contributions</h2>
     <ul class="contrib-list">
-        <li data-lang="contrib-1"><strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics <span class="tag">NASU Prize 2006</span></li>
+        <li data-lang="contrib-1"><strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics <span class="tag">NASU Prize 2007</span></li>
         <li data-lang="contrib-2"><strong>Patent UA 86679</strong> – method for plant species identification using spectral data & machine learning</li>
         <li data-lang="contrib-3"><strong>STCU Project #5219</strong> (PI) – wireless intelligent biosensors for precision agriculture</li>
         <li data-lang="contrib-4"><strong>STCU Project #6064</strong> (PI) – distributed smart sensor network for environmental monitoring</li>
@@ -270,7 +264,7 @@ ul li {
     <!-- ===== AWARDS ===== -->
     <h2 data-lang="awards-title">Awards &amp; Honours</h2>
     <ul>
-        <li data-lang="award-1">NASU Award for Young Scientists (2006)</li>
+        <li data-lang="award-1">NASU Award for Young Scientists (2007)</li>
         <li data-lang="award-2">NASU Young Scientist Research Prize (2013)</li>
         <li data-lang="award-3">First Prize, Sikorsky Challenge (2013) – “Intelligent Sensor Technologies”
             <br />
@@ -381,7 +375,7 @@ ul li {
         <h3 data-lang="project-3-title" style="margin-bottom: 0.2rem;">Portable Fluorometer "Floratest"</h3>
         <p style="margin: 0.2rem 0; color: var(--accent); font-weight: 500;" data-lang="project-3-role">Co-developer (2007)</p>
         <p data-lang="project-3-desc">Development of a portable fluorometer for express diagnostics of plant condition using the method of chlorophyll fluorescence induction.</p>
-       <ul class="bullet-list">
+        <ul class="bullet-list">
             <li data-lang="project-3-award-1"><strong>NASU Prize for Young Scientists (2007)</strong> — for the best scientific work.
                 <span style="font-size: 0.85rem; margin-left: 0.5rem;">
                     <a href="https://www.old.nas.gov.ua/UA/CompetitiveWork/Pages/Default.aspx?WorkID=0003122" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">🔗 Competition entry</a>
@@ -434,7 +428,7 @@ ul li {
     <!-- ===== INTERNATIONAL RESEARCH INITIATIVES (LINKS ONLY) ===== -->
     <!-- ============================================================ -->
     <h2 data-lang="initiatives-links-title" style="margin-top: 2.5rem;">International Research Initiatives</h2>
-   <ul class="bullet-list">
+    <ul class="bullet-list">
         <li><a href="https://www.uil.unesco.org" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">UNESRALE – UNESCO Remote Access to Lab Equipment</a></li>
         <li><a href="https://www.unesco.org/en/open-science" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">UNESCO Open Science Recommendation</a></li>
         <li><a href="https://emphasis.plant-phenotyping.eu" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">EMPHASIS – European Plant Phenotyping Infrastructure</a></li>
@@ -621,7 +615,7 @@ const translations = {
         'vision-text': 'My research programme aims to establish <strong>Strong AI through biologically inspired architectures</strong> and to enable <strong>controlled, predictable biology via digital infrastructures</strong>. I envision a closed‑loop paradigm where distributed biosensor networks feed real‑time data into neuro‑symbolic AI systems, which in turn model and control biological processes — from plant stress responses to animal behaviour. I propose to create a <strong>distributed sensor‑based digital infrastructure for biological system modelling</strong>, integrating relational representations, Cognitive Interaction Layers for Neuro‑Symbolic AI, and the concept of a digital organism, to transform biology from a descriptive science into an engineering discipline.',
         'vision-pioneering': 'My vision was ahead of its time. When I first proposed the integration of biosensors into wireless networks and control via expert systems in the late 2000s, these ideas were met with skepticism. Today, these concepts are recognized as essential for precision agriculture, environmental monitoring, and digital biology. My early work on portable fluorimetry (2006–2008) and distributed sensor networks (2013–2016) laid the foundation for a research direction that has been developing at the V.M. Glushkov Institute of Cybernetics for almost two decades. The global network for automatic knowledge taking (UA 89025, 2014) was the first step toward what I now develop as cognitive AI architectures. This continuity of thought reflects my long-term commitment to building intelligent systems that truly understand and model complex biological and cognitive processes.',
         'contrib-title': 'Key Scientific Contributions',
-        'contrib-1': '<strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics <span class="tag">NASU Prize 2006</span>',
+        'contrib-1': '<strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics <span class="tag">NASU Prize 2007</span>',
         'contrib-2': '<strong>Patent UA 86679</strong> – method for plant species identification using spectral data & machine learning',
         'contrib-3': '<strong>STCU Project #5219</strong> (PI) – wireless intelligent biosensors for precision agriculture',
         'contrib-4': '<strong>STCU Project #6064</strong> (PI) – distributed smart sensor network for environmental monitoring',
@@ -632,7 +626,7 @@ const translations = {
         'contrib-9': '<strong>Digital Organism</strong> – a unifying model for AGI <span class="tag">Preprints 2025</span>',
         'contrib-10': '<strong>Abstract Biology</strong> – relational framework for controlled biology <span class="tag">Preprints 2025</span>',
         'awards-title': 'Awards & Honours',
-        'award-1': 'NASU Award for Young Scientists (2006)',
+        'award-1': 'NASU Award for Young Scientists (2007)',
         'award-2': 'NASU Young Scientist Research Prize (2013)',
         'award-3': 'First Prize, Sikorsky Challenge (2013) – “Intelligent Sensor Technologies”',
         'award-4': 'Scholarships of the Cabinet of Ministers and President of Ukraine',
@@ -687,7 +681,7 @@ const translations = {
         'vision-text': 'Моя дослідницька програма спрямована на створення <strong>сильного ШІ через біологічно натхненні архітектури</strong> та забезпечення <strong>керованої, передбачуваної біології за допомогою цифрових інфраструктур</strong>. Я бачу замкнуту парадигму, де розподілені біосенсорні мережі передають дані в реальному часі до нейро-символічних систем ШІ, які, у свою чергу, моделюють і контролюють біологічні процеси — від стресових реакцій рослин до поведінки тварин. Я пропоную створити <strong>розподілену сенсорну цифрову інфраструктуру для моделювання біологічних систем</strong>, що інтегрує реляційні представлення, когнітивні шари взаємодії для нейро-символічного ШІ (Cognitive Interaction Layers for Neuro-Symbolic AI) та концепцію цифрового організму, щоб перейти від описової біології до інженерної дисципліни.',
         'vision-pioneering': 'Моє бачення випереджає свій час. Коли я вперше запропонувала інтеграцію біосенсорів до бездротових мереж та керування за рахунок експертних систем наприкінці 2000-х, ці ідеї викликали скепсис. Сьогодні ці концепції визнані невід\'ємними для точного землеробства, екологічного моніторингу та цифрової біології. Мої ранні роботи з портативної флуориметрії (2006–2008) та розподілених сенсорних мереж (2013–2016) заклали основу для наукового напрямку, який розвивається в Інституті кібернетики ім. В.М. Глушкова вже майже два десятиліття. Глобальна мережа автоматичного отримання знань (UA 89025, 2014) стала першим кроком до того, що зараз знайшло свій розвиток як архітектури когнітивного ШІ. Ця спадкоємність думки відображає мою довгострокову відданість створенню інтелектуальних систем, які дійсно розуміють і моделюють складні біологічні та когнітивні процеси.',
         'contrib-title': 'Ключові наукові досягнення',
-        'contrib-1': '<strong>Портативний флуориметр «Floratest»</strong> – перший портативний пристрій для діагностики виноградників за флуоресценцією хлорофілу <span class="tag">Премія НАНУ 2006</span>',
+        'contrib-1': '<strong>Портативний флуориметр «Floratest»</strong> – перший портативний пристрій для діагностики виноградників за флуоресценцією хлорофілу <span class="tag">Премія НАНУ 2007</span>',
         'contrib-2': '<strong>Патент UA 86679</strong> – метод ідентифікації видів рослин за спектральними даними та машинним навчанням',
         'contrib-3': '<strong>Проєкт STCU #5219</strong> (керівник) – бездротові інтелектуальні біосенсори для точного землеробства',
         'contrib-4': '<strong>Проєкт STCU #6064</strong> (керівник) – розподілена мережа розумних сенсорів для моніторингу довкілля',
@@ -698,7 +692,7 @@ const translations = {
         'contrib-9': '<strong>Цифровий організм</strong> – уніфікована модель для AGI <span class="tag">Preprints 2025</span>',
         'contrib-10': '<strong>Абстрактна біологія</strong> – реляційна основа для керованої біології <span class="tag">Preprints 2025</span>',
         'awards-title': 'Нагороди та відзнаки',
-        'award-1': 'Премія НАН України для молодих учених (2006)',
+        'award-1': 'Премія НАН України для молодих учених (2007)',
         'award-2': 'Премія НАН України в галузі досліджень молодих учених (2013)',
         'award-3': 'Перша премія Sikorsky Challenge (2013) – «Інтелектуальні сенсорні технології»',
         'award-4': 'Стипендії Кабінету Міністрів та Президента України',
@@ -744,144 +738,80 @@ const translations = {
         'phone-note': '(за запитом)',
         'initiatives-links-title': 'Міжнародні наукові ініціативи',
         footer: '© 2026 Євгенія Бабенко – Створено для ERC Advanced Grant'
-    },
-    cs: {
-        name: 'Yevheniia Babenko',
-        title: 'Ph.D. · Vedoucí vědecká pracovnice · Kybernetika a Biologie',
-        location: 'Česká republika',
-        'vision-title': 'Vědecká vize',
-        'vision-text': 'Můj výzkumný program si klade za cíl vytvořit <strong>silnou AI prostřednictvím biologicky inspirovaných architektur</strong> a umožnit <strong>řízenou, předvídatelnou biologii prostřednictvím digitálních infrastruktur</strong>. Představuji si uzavřenou smyčku, kde distribuované biosenzorové sítě přenášejí data v reálném čase do neuro-symbolických AI systémů, které následně modelují a řídí biologické procesy — od stresových reakcí rostlin po chování zvířat. Navrhuji vytvořit <strong>distribuovanou senzorovou digitální infrastrukturu pro modelování biologických systémů</strong>, která integruje relační reprezentace, kognitivní interakční vrstvy pro neuro-symbolickou AI (Cognitive Interaction Layers for Neuro-Symbolic AI) a koncept digitálního organismu, aby se biologie přeměnila z deskriptivní vědy na inženýrskou disciplínu.',
-        'vision-pioneering': 'Tato vize předběhla svou dobu. Když jsem na konci 20. let poprvé navrhla integraci biosenzorů do bezdrátových sítí a řízení pomocí expertních systémů, tyto myšlenky se setkaly se skepticismem. Dnes jsou tyto koncepty uznávány jako nezbytné pro precizní zemědělství, monitorování životního prostředí a digitální biologii. Moje rané práce na přenosné fluorimetrii (2006–2008) a distribuovaných senzorových sítích (2013–2016) položily základ pro výzkumný směr, který se na V.M. Glushkov Institute of Cybernetics rozvíjí téměř dvě desetiletí. Globální síť automatického získávání znalostí (UA 89025, 2014) byla prvním krokem k tomu, co nyní rozvíjím jako architektury kognitivní AI. Tato kontinuita myšlení odráží můj dlouhodobý závazek vytvářet inteligentní systémy, které skutečně rozumějí a modelují složité biologické a kognitivní procesy.',
-        'contrib-title': 'Klíčové vědecké příspěvky',
-        'contrib-1': '<strong>Přenosný fluorometr „Floratest“</strong> – první přenosné zařízení pro diagnostiku vinic pomocí fluorescence chlorofylu <span class="tag">Cena NASU 2006</span>',
-        'contrib-2': '<strong>Patent UA 86679</strong> – metoda identifikace druhů rostlin pomocí spektrálních dat a strojového učení',
-        'contrib-3': '<strong>Projekt STCU #5219</strong> (řešitel) – bezdrátové inteligentní biosenzory pro precizní zemědělství',
-        'contrib-4': '<strong>Projekt STCU #6064</strong> (řešitel) – distribuovaná síť inteligentních senzorů pro monitorování životního prostředí',
-        'contrib-5': '<strong>Metodologický rámec</strong> pro návrh informačních systémů v rostlinné výrobě <span class="tag">2022</span>',
-        'contrib-6': '<strong>AI v behaviorálních studiích</strong> – analýza modelů závislosti u hlodavců pomocí AI <span class="tag">ProfIT AI 2024</span>',
-        'contrib-7': '<strong>Syntéza AI a senzorů</strong> v behaviorálním výzkumu <span class="tag">IJ ITA 2025</span>',
-        'contrib-8': '<strong>Kognitivní interakční vrstvy</strong> – nová neuro-symbolická architektura AI <span class="tag">2025</span>',
-        'contrib-9': '<strong>Digitální organismus</strong> – sjednocující model pro AGI <span class="tag">Preprints 2025</span>',
-        'contrib-10': '<strong>Abstraktní biologie</strong> – relační rámec pro řízenou biologii <span class="tag">Preprints 2025</span>',
-        'awards-title': 'Ceny a vyznamenání',
-        'award-1': 'Cena NASU pro mladé vědce (2006)',
-        'award-2': 'Cena NASU v oblasti výzkumu mladých vědců (2013)',
-        'award-3': 'První cena Sikorsky Challenge (2013) – „Inteligentní senzorové technologie“',
-        'award-4': 'Stipendia Kabinetu ministrů a Prezidenta Ukrajiny',
-        'patents-title': 'Patenty (6)',
-        'patent-1': 'Globální síť automatického získávání znalostí (UA 89025, 2014)',
-        'patent-2': 'Metoda identifikace druhů rostlin (UA 86679, 2014)',
-        'patent-3': 'Informační metoda pro logistickou podporu (UA 86759, 2014)',
-        'patent-4': 'Způsob snížení neproduktivní spotřeby půdní vlhkosti (UA 27131, 2007)',
-        'patent-5': 'Způsob stanovení fyziologického stavu rostlin (UA 24908, 2007)',
-        'patent-6': 'Způsob stanovení odolnosti rostlin vůči suchu (UA 20131, 2007)',
-        'pubs-title': 'Vybrané publikace',
-        'pub-1': '<strong>Babenko Y.</strong> Trendy a inovace v moderním zemědělství: od fluorescenčních senzorů k rozhodovacím systémům. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a>',
-        'pub-2': '<strong>Babenko Y., Romanov V.</strong> Kognitivní interakční vrstvy pro neuro-symbolickou AI. <em>ProfIT AI 2025</em>, Liverpool, UK. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a>',
-        'pub-3': '<strong>Babenko Y.</strong> Bioinspirované modely pro metaheuristickou optimalizaci. <em>TechRxiv</em>, 2025. <a href="https://doi.org/10.36227/techrXiv.175693302.22402426/v1" target="_blank">DOI</a>',
-        'pub-4': '<strong>Babenko Y.</strong> Cesta k obecné umělé inteligenci prostřednictvím konceptu digitálního organismu. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1612.v1" target="_blank">DOI</a>',
-        'pub-5': '<strong>Babenko Y.</strong> Abstraktní biologie: k relačnímu rámci pro život. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1958.v1" target="_blank">DOI</a>',
-        'pub-6': '<strong>Babenko Y., Romanov V.</strong> Inteligentní metody v behaviorálních studiích na zvířecích modelech. <em>ProfIT AI 2024</em>, Cambridge, MA, USA. <a href="https://ceur-ws.org/Vol-3777/paper17.pdf" target="_blank">PDF</a>',
-        'pub-7': '<strong>Babenko Y.</strong> Moderní nástroje a tržní dynamika v behaviorálním výzkumu. <em>IJ ITA</em>, Vol. 32, Issue 2, pp. 146-176, 2025. <a href="https://doi.org/10.54521/ijita32-02-p05" target="_blank">DOI</a>',
-        'pub-8': '<strong>Babenko Y.</strong> Okrajové inteligentní biosenzorové systémy s duální optimalizací. <em>ICISN 2025</em>, Antalya, Türkiye. <a href="https://doi.org/10.58190/icisna.2025.142" target="_blank">DOI</a>',
-        'download-pubs': '📄 Stáhnout úplný seznam publikací (PDF)',
-        'projects-title': 'Klíčové projekty a uznání',
-        'project-1-title': 'Inteligentní senzorová síť pro zemědělství',
-        'project-1-role': 'Hlavní řešitel (2013–2016)',
-        'project-1-desc': 'Vývoj distribuovaného senzorového systému pro zemědělský monitoring na základě transdisciplinárních přístupů. Projekt byl uznán jako vítěz soutěže NASU (2013).',
-        'project-1-links': 'Záznamy:',
-        'project-2-title': 'Vývoj technologií internetu věcí',
-        'project-2-role': 'Člen projektového týmu (2021–2023)',
-        'project-2-desc': 'Vývoj IoT technologií pro potravinářský průmysl, rostlinnou výrobu a zdravotnictví. Vytváření nových informačních technologií a metod modelování inteligentních systémů pro precizní zemědělství a ochranu životního prostředí.',
-        'project-2-links': 'Záznamy:',
-        'project-3-title': 'Přenosný fluorometr "Floratest"',
-        'project-3-role': 'Spoluautor (2007)',
-        'project-3-desc': 'Vývoj přenosného fluorometru pro expresní diagnostiku stavu rostlin metodou indukce fluorescence chlorofylu.',
-        'project-3-award-1': '<strong>Cena NASU pro mladé vědce (2007)</strong> — za nejlepší vědeckou práci.',
-        'project-3-award-2': '<strong>Vítěz celoukrajinské soutěže „Vynález – 2008“</strong> (Odeská oblast) za patent „Způsob stanovení fyziologického stavu rostlin metodou indukce fluorescence chlorofylu“.',
-        'project-3-school': '<strong>Tato práce položila základy vědecké školy v oblasti biosenzorových systémů pro biologické objekty v Ústavu kybernetiky V.M. Glushkova NAN Ukrajiny, která se rozvíjí již téměř 20 let.</strong>',
-        'project-3-links': 'Záznam:',
-        'project-4-title': 'Doktorská disertace: Odolnost révy vinné vůči suchu',
-        'project-4-role': 'Autor (2008)',
-        'project-4-desc': 'Vývoj a zdokonalení metod hodnocení odolnosti odrůd révy vinné vůči suchu a technik zmírňování dopadů sucha. Specializace: 06.01.08 – Vinařství.',
-        'project-4-links': 'Záznam:',
-        'contact-title': 'Kontakt',
-        'download-cv': 'Stáhnout kompletní CV (formát ERC)',
-        'phone-note': '(na vyžádání)',
-        'initiatives-links-title': 'Mezinárodní výzkumné iniciativy',
-        footer: '© 2026 Yevheniia Babenko – Vytvořeno pro ERC Advanced Grant'
     }
 };
 
 // ============================================================
 //  KNOWLEDGE BASE
 // ============================================================
+let lastBotResponse = '';
+
 const knowledgeBase = [
     {
-        keywords_uk: ['привіт', 'здоров', 'dobrý den', 'ahoj'],
+        keywords_uk: ['привіт', 'вітаю', 'добрий день', 'здоров'],
         keywords_en: ['hello', 'hi', 'hey'],
-        response_uk: 'Вітаю! Я — віртуальний асистент Євгенії Бабенко. Як можу допомогти? Запитайте про мої дослідження, проєкт ERC або публікації.',
-        response_en: 'Hello! I am the virtual assistant of Yevheniia Babenko. How can I help? Ask about my research, ERC project, or publications.'
+        response_uk: 'Можете запитати про дослідження, ERC-проєкт, публікації, патенти, нагороди або контактну інформацію.',
+        response_en: 'You can ask about Yevheniia Babenko's research, ERC project, publications, patents, awards, or contact information.'
     },
     {
-        keywords_uk: ['хто ви', 'хто ти', 'про себе', 'babiography'],
-        keywords_en: ['who are you', 'about you', 'biography'],
-        response_uk: 'Мене звати Євгенія Бабенко, доктор філософії, старший науковий співробітник в Інституті кібернетики ім. В.М. Глушкова НАН України. Моя спеціалізація — сильний ШІ, нейро-символічні системи, обчислювальна біологія.',
-        response_en: 'My name is Yevheniia Babenko, Ph.D., Senior Research Fellow at the V.M. Glushkov Institute of Cybernetics. My specialization is Strong AI, neuro-symbolic systems, computational biology.'
+        keywords_uk: ['хто ви', 'хто ти', 'про себе', 'біографія', 'біо'],
+        keywords_en: ['who are you', 'about you', 'biography', 'bio'],
+        response_uk: 'Євгенія Бабенко — доктор філософії, старший науковий співробітник Інституту кібернетики ім. В.М. Глушкова НАН України. Її дослідження поєднують кібернетику, біологію, медичну інформатику, біосенсорні системи та нейро-символічний ШІ.',
+        response_en: 'Yevheniia Babenko is a Ph.D. and Senior Research Fellow at the V.M. Glushkov Institute of Cybernetics of the NAS of Ukraine. Her research combines cybernetics, biology, medical informatics, biosensing systems, and neuro-symbolic AI.'
     },
     {
-        keywords_uk: ['бачення', 'мета', 'vision'],
+        keywords_uk: ['бачення', 'мета', 'наукове бачення', 'vision'],
         keywords_en: ['vision', 'research vision', 'goal'],
-        response_uk: 'Моє наукове бачення — побудувати розподілену сенсорну цифрову інфраструктуру pro modelování biologických systémů. Я поєдную нейро-символічний ШІ, біосенсори та реляційні представлення, щоб зробити біологію передбачуваною.',
-        response_en: 'My research vision is to build a distributed sensor-based digital infrastructure for biological system modelling. I integrate neuro-symbolic AI, bio-sensors, and relational representations to make biology predictive.'
+        response_uk: 'Наукове бачення Євгенії Бабенко полягає у створенні розподіленої сенсорної цифрової інфраструктури для моделювання біологічних систем. Вона поєднує нейро-символічний ШІ, біосенсори та реляційні представлення, щоб перейти від описової біології до передбачуваного та керованого моделювання живих систем.',
+        response_en: 'Yevheniia Babenko\'s research vision is to build a distributed sensor-based digital infrastructure for modelling biological systems. She integrates neuro-symbolic AI, biosensors, and relational representations to move biology from description toward predictive and controlled modelling of living systems.'
     },
     {
         keywords_uk: ['сильний ші', 'штучний інтелект', 'agi', 'цифровий організм'],
         keywords_en: ['strong ai', 'artificial intelligence', 'agi', 'digital organism'],
-        response_uk: 'Я розробляю концепцію цифрового органiзmu jako modelu pro silnou AI (AGI). Це біологічно натхненна архітектура, яка поєднує символічне та суб-символічне навчання. Ключова публікація: «Шлях до загального штучного інтелекту через концепцію цифрового організму» (2025).',
-        response_en: 'I am developing the concept of a digital organism as a model for Strong AI (AGI). This is a biologically inspired architecture that combines symbolic and sub-symbolic learning. One key publication is «The Path to Artificial General Intelligence Through the Concept of a Digital Organism» (2025).'
+        response_uk: 'Євгенія Бабенко розробляє концепцію цифрового організму як біологічно натхненної моделі для сильного ШІ та AGI. Ця архітектура поєднує символічне і субсимволічне навчання, а також ідеї когнітивних шарів взаємодії.',
+        response_en: 'Yevheniia Babenko develops the concept of a digital organism as a biologically inspired model for Strong AI and AGI. This architecture combines symbolic and sub-symbolic learning with Cognitive Interaction Layers.'
     },
     {
-        keywords_uk: ['керована біологія', 'передбачувана біологія', 'цифрові двійники'],
+        keywords_uk: ['керована біологія', 'передбачувана біологія', 'цифрові двійники', 'digital twins'],
         keywords_en: ['controlled biology', 'predictive biology', 'digital twins'],
-        response_uk: 'Керована біологія означає створення передбачувальних моделей живих systémů pomocí digitálních technologií. Я працюю над інфраструктурою pro digitální dvojčata rostlin a zvířat, щоб předpovídat změny v reálném čase.',
-        response_en: 'Controlled biology means creating predictive models of living systems using digital technologies. I work on infrastructure for digital twins of plants and animals to predict changes in real time.'
+        response_uk: 'Керована біологія означає створення передбачувальних моделей живих систем за допомогою цифрових технологій. У цьому напрямі Євгенія Бабенко працює над інфраструктурою для цифрових двійників рослин і тварин та аналізу змін у реальному часі.',
+        response_en: 'Controlled biology means creating predictive models of living systems using digital technologies. In this direction, Yevheniia Babenko works on infrastructure for digital twins of plants and animals and real-time change analysis.'
     },
     {
-        keywords_uk: ['erc', 'advanced grant', 'грант', 'фінансування', 'host'],
+        keywords_uk: ['erc', 'advanced grant', 'грант', 'фінансування', 'host', 'приймаюча установа'],
         keywords_en: ['erc', 'advanced grant', 'grant', 'funding', 'host'],
-        response_uk: 'Я готую заявку на ERC Advanced Grant 2026 (дедлайн 27 серпня). Шукаю приймаючу установu v Evropě (Česko, Švýcarsko, Německo). Якщо зацікавлені — напишіть мені na email: sarahan@nas.gov.ua',
-        response_en: 'I am preparing an application for ERC Advanced Grant 2026 (deadline 27 August). I am looking for a host institution in Europe (Czechia, Switzerland, Germany). If interested, please email me at sarahan@nas.gov.ua'
+        response_uk: 'Євгенія Бабенко готує заявку на ERC Advanced Grant 2026. Її проєкт пов’язаний із сильним ШІ, біологічно натхненними архітектурами та цифровою інфраструктурою для моделювання біологічних систем. Для співпраці можна написати на sarahan@nas.gov.ua або evb@post.cz.',
+        response_en: 'Yevheniia Babenko is preparing an ERC Advanced Grant 2026 application. The project is related to Strong AI, biologically inspired architectures, and digital infrastructure for modelling biological systems. For collaboration, please email sarahan@nas.gov.ua or evb@post.cz.'
     },
     {
-        keywords_uk: ['публікації', 'статті', 'наукові роботи'],
-        keywords_en: ['publications', 'papers', 'articles'],
-        response_uk: 'Мої публікації доступні v секції «Vybrané publikace» na tomto webu, а також у PDF pro stažení. Останні ключові роботи: «Когнітивні шари взаємодії pro neuro-symbolickou AI» (2025), «Абстрактна біологія» (2025).',
-        response_en: 'My publications are available in the "Selected Publications" section on this site, as well as in the PDF download. Recent key works: «Cognitive Interaction Layers for Neuro-Symbolic AI» (2025), «Abstract Biology» (2025).'
+        keywords_uk: ['публікації', 'статті', 'наукові роботи', 'doi'],
+        keywords_en: ['publications', 'papers', 'articles', 'doi'],
+        response_uk: 'Публікації Євгенії Бабенко наведені у розділі «Вибрані публікації» на сайті та у PDF-файлі для завантаження. Серед ключових тем — Cognitive Interaction Layers for Neuro-Symbolic AI, Digital Organism, Abstract Biology, біосенсорні системи та поведінкові дослідження.',
+        response_en: 'Yevheniia Babenko\'s publications are listed in the “Selected Publications” section and in the downloadable PDF. Key topics include Cognitive Interaction Layers for Neuro-Symbolic AI, Digital Organism, Abstract Biology, biosensing systems, and behavioural studies.'
     },
     {
         keywords_uk: ['патенти', 'винаходи'],
         keywords_en: ['patents', 'inventions'],
-        response_uk: 'Я співавтор 6 patentů v oblasti senzorových technologií, diagnostiky rostlin a informačních systémů. Hlavní: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.',
-        response_en: 'I am a co-author of 6 patents in sensor technologies, plant diagnostics, and information systems. Main ones: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.'
+        response_uk: 'Євгенія Бабенко є співавтором 6 патентів у галузі сенсорних технологій, діагностики рослин та інформаційних систем. Основні патенти: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.',
+        response_en: 'Yevheniia Babenko is a co-author of 6 patents in sensor technologies, plant diagnostics, and information systems. Main patents: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.'
     },
     {
-        keywords_uk: ['нагороди', 'відзнаки', 'визнання'],
+        keywords_uk: ['нагороди', 'відзнаки', 'визнання', 'премія'],
         keywords_en: ['awards', 'prizes', 'recognition'],
-        response_uk: 'Мої дослідження відзначені cenou NASU pro mladé vědce (2006), cenou NASU v oblasti výzkumu mladých vědců (2013), prvním místem na Sikorsky Challenge (2013), stipendii Kabinetu ministrů a Prezidenta Ukrajiny.',
-        response_en: 'My research has been recognized with the NASU Award for Young Scientists (2006), the NASU Young Scientist Research Prize (2013), first prize at Sikorsky Challenge (2013), and scholarships from the Cabinet of Ministers and the President of Ukraine.'
+        response_uk: 'Дослідження Євгенії Бабенко були відзначені Премією НАН України для молодих учених (2007), Премією НАН України в галузі досліджень молодих учених (2013), першим місцем у Sikorsky Challenge (2013), а також стипендіями Кабінету Міністрів і Президента України.',
+        response_en: 'Yevheniia Babenko\'s research has been recognized with the NASU Award for Young Scientists (2007), the NASU Young Scientist Research Prize (2013), first prize at Sikorsky Challenge (2013), and scholarships from the Cabinet of Ministers and the President of Ukraine.'
     },
     {
         keywords_uk: ['контакт', 'зв\'язатися', 'email', 'пошта'],
         keywords_en: ['contact', 'email', 'reach out'],
-        response_uk: 'Můžete mě kontaktovat emailem: sarahan@nas.gov.ua nebo evb@post.cz. Jsem také k dispozici na LinkedIn a ResearchGate.',
-        response_en: 'You can reach me by email: sarahan@nas.gov.ua or evb@post.cz. I am also available on LinkedIn and ResearchGate.'
+        response_uk: 'З Євгенією Бабенко можна зв’язатися електронною поштою: sarahan@nas.gov.ua або evb@post.cz. Також доступні посилання на ORCID та LinkedIn у верхній частині сайту.',
+        response_en: 'You can reach Yevheniia Babenko by email: sarahan@nas.gov.ua or evb@post.cz. ORCID and LinkedIn links are also available in the site header.'
     },
     {
-        keywords_uk: ['сенсори', 'біосенсори', 'флуориметр', 'floratest'],
+        keywords_uk: ['сенсори', 'біосенсори', 'флуориметр', 'floratest', 'флоратест'],
         keywords_en: ['sensors', 'biosensors', 'fluorometer', 'floratest'],
-        response_uk: 'Vyvinula jsem přenosný fluorometr «Floratest» pro diagnostiku rostlin pomocí fluorescence chlorofylu. Toto zařízení bylo testováno na vinicích a stalo se základem pro mé projekty distribuovaných senzorových sítí.',
-        response_en: 'I developed the portable fluorometer «Floratest» for plant diagnostics via chlorophyll fluorescence. This device was tested in vineyards and became the foundation for my projects on distributed sensor networks.'
+        response_uk: 'Євгенія Бабенко була співрозробницею портативного флуориметра «Floratest» для експрес-діагностики стану рослин методом індукції флуоресценції хлорофілу. Ця робота отримала Премію НАН України для молодих учених у 2007 році та стала основою подальших досліджень у сфері біосенсорних систем.',
+        response_en: 'Yevheniia Babenko co-developed the portable fluorometer “Floratest” for express diagnostics of plant condition using chlorophyll fluorescence induction. This work received the NASU Award for Young Scientists in 2007 and became a foundation for later biosensing research.'
     }
 ];
 
@@ -890,17 +820,14 @@ const knowledgeBase = [
 // ============================================================
 function detectLanguage(text) {
     const ukrainianChars = /[а-щА-ЩЬьЮюЯяІіЄєЇїҐґ]/;
-    const czechChars = /[ěščřžýáíéúůďťň]/i;
-    if (ukrainianChars.test(text)) return 'uk';
-    if (czechChars.test(text)) return 'cs';
-    return 'en';
+    return ukrainianChars.test(text) ? 'uk' : 'en';
 }
 
 function getBotResponse(userText, lang) {
     const lower = userText.toLowerCase().trim();
-    if (!lower) return lang === 'en' ? 'Please type your question.' : lang === 'uk' ? 'Напишіть, будь ласка, ваше запитання.' : 'Napište prosím svou otázku.';
+    if (!lower) return lang === 'uk' ? 'Напишіть, будь ласка, ваше запитання.' : 'Please type your question.';
 
-    const words = lower.replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 1);
+    const words = lower.replace(/[^\p{L}\p{N}\s]/gu, '').split(/\s+/).filter(w => w.length > 1);
     const keywordsKey = lang === 'uk' ? 'keywords_uk' : 'keywords_en';
     const responseKey = lang === 'uk' ? 'response_uk' : 'response_en';
 
@@ -911,10 +838,11 @@ function getBotResponse(userText, lang) {
         const keywords = entry[keywordsKey] || [];
         let score = 0;
         for (const kw of keywords) {
-            if (lower.includes(kw.toLowerCase())) {
+            const kwLower = kw.toLowerCase();
+            if (lower.includes(kwLower)) {
                 score += 5;
             } else {
-                const kwWords = kw.toLowerCase().split(/\s+/);
+                const kwWords = kwLower.split(/\s+/);
                 for (const w of words) {
                     if (kwWords.some(kwW => kwW.includes(w) || w.includes(kwW))) {
                         score += 1;
@@ -928,16 +856,26 @@ function getBotResponse(userText, lang) {
         }
     }
 
+    let answer;
     if (bestScore > 2 && bestMatch) {
-        return bestMatch;
+        answer = bestMatch;
     } else {
-        if (lang === 'uk') return 'Вибачте, не знайшов точної відповіді. Напишіть мені на email: sarahan@nas.gov.ua або evb@post.cz.';
-        if (lang === 'cs') return 'Omlouvám se, nenašel jsem přesnou odpověď. Napište mi na email: sarahan@nas.gov.ua nebo evb@post.cz.';
-        return 'Sorry, I could not find an exact answer. Please email me at sarahan@nas.gov.ua or evb@post.cz.';
+        answer = lang === 'uk'
+            ? 'Точної відповіді у локальній базі сайту немає. Напишіть, будь ласка: sarahan@nas.gov.ua або evb@post.cz.'
+            : 'No exact answer was found in the local site knowledge base. Please email sarahan@nas.gov.ua or evb@post.cz.';
     }
+
+    if (answer === lastBotResponse) {
+        answer = lang === 'uk'
+            ? 'Це саме питання вже було опрацьовано. Спробуйте уточнити тему: публікації, патенти, ERC, Floratest, нагороди або контакти.'
+            : 'This topic was already answered. Try narrowing the question: publications, patents, ERC, Floratest, awards, or contact details.';
+    }
+    lastBotResponse = answer;
+    return answer;
 }
 
 function setLanguage(lang) {
+    if (!translations[lang]) lang = 'en';
     localStorage.setItem('lang', lang);
     document.querySelectorAll('[data-lang]').forEach(el => {
         const key = el.getAttribute('data-lang');
@@ -958,12 +896,8 @@ function updateChatUI(lang) {
     const sendBtn = document.getElementById('chat-send');
     if (lang === 'uk') {
         titleEl.textContent = '🤖 Запитайте про мою роботу';
-        inputEl.placeholder = 'Напишіть питання...';
+        inputEl.placeholder = 'Напишіть запитання...';
         sendBtn.textContent = 'Надіслати';
-    } else if (lang === 'cs') {
-        titleEl.textContent = '🤖 Zeptejte se na mou práci';
-        inputEl.placeholder = 'Napište otázku...';
-        sendBtn.textContent = 'Odeslat';
     } else {
         titleEl.textContent = '🤖 Ask about my work';
         inputEl.placeholder = 'Type your question...';
@@ -995,7 +929,6 @@ function handleSend() {
     const typingDiv = document.createElement('div');
     typingDiv.className = 'msg-typing';
     if (lang === 'uk') typingDiv.textContent = 'Бот друкує...';
-    else if (lang === 'cs') typingDiv.textContent = 'Bot píše...';
     else typingDiv.textContent = 'Bot is typing...';
     messagesEl.appendChild(typingDiv);
     messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -1029,9 +962,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (document.getElementById('chat-messages').children.length === 0) {
                 const lang = document.documentElement.lang || 'en';
                 let greeting;
-                if (lang === 'uk') greeting = 'Вітаю! Я — віртуальний асистент Євгенії Бабенко. Запитайте про мої дослідження, проєкт ERC або публікації.';
-                else if (lang === 'cs') greeting = 'Vítám vás! Jsem virtuální asistentka Yevheniie Babenko. Zeptejte se na můj výzkum, projekt ERC nebo publikace.';
-                else greeting = 'Hello! I am the virtual assistant of Yevheniia Babenko. Ask me about my research, ERC project, or publications.';
+                if (lang === 'uk') greeting = 'Запитайте про дослідження, проєкт ERC, публікації, патенти або контакти.';
+                else greeting = 'Ask about research, the ERC project, publications, patents, or contact details.';
                 appendMessage(greeting, 'bot');
             }
         }
