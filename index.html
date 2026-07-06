@@ -201,18 +201,6 @@
         .patent-link a:hover {
             border-bottom: 1px solid var(--accent);
         }
-        .project-3-link {
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
-        }
-        .project-3-link a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--accent);
-        }
-        .project-3-link a:hover {
-            border-bottom: 1px solid var(--accent);
-        }
         .pub-filters {
             display: flex;
             flex-wrap: wrap;
@@ -446,7 +434,6 @@
         My vision was ahead of its time. When I first proposed the integration of biosensors into wireless networks and control via expert systems in the late 2000s, these ideas were met with skepticism. Today, these concepts are recognized as essential for precision agriculture, environmental monitoring, and digital biology. My early work on portable fluorimetry (2006–2008) and distributed sensor networks (2013–2016) laid the foundation for a research direction that has been developing at the V.M. Glushkov Institute of Cybernetics for almost two decades. The global network for automatic knowledge taking (UA 89025, 2014) was the first step toward what I now develop as cognitive AI architectures. This continuity of thought reflects my long-term commitment to building intelligent systems that truly understand and model complex biological and cognitive processes.
     </p>
 
-    <!-- ===== KEY CONTRIBUTIONS (цвет тегов теперь одинаковый) ===== -->
     <h2 data-lang="contrib-title">Key Scientific Contributions</h2>
     <ul class="contrib-list">
         <li data-lang="contrib-1">
@@ -480,6 +467,13 @@
             </span>
         </li>
         <li data-lang="award-4">Scholarships of the Cabinet of Ministers and President of Ukraine</li>
+        <!-- ДОБАВЛЕНО: новая награда -->
+        <li data-lang="award-5" style="border-bottom: none;">
+            <strong>Winner of the All-Ukrainian competition "Invention – 2008"</strong> (Odesa region)
+            <span style="font-size: 0.85rem; margin-left: 0.5rem;">
+                <a href="https://share.google/aimode/EdFSKnBIgXDBdLeXw" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">🔗 Document</a>
+            </span>
+        </li>
         <li style="border-bottom: none; padding-top: 0.8rem;">
             <span style="font-size: 0.9rem;">
                 <i class="fas fa-id-card" style="color: var(--accent);"></i>
@@ -674,7 +668,9 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-// ===== ПЕРЕВОДЫ (полные) =====
+// ============================================================
+//  ПЕРЕВОДЫ (с добавлением новой награды)
+// ============================================================
 const translations = {
     en: {
         name: 'Yevheniia Babenko',
@@ -699,6 +695,7 @@ const translations = {
         'award-2': 'NASU Young Scientist Research Prize (2013)',
         'award-3': 'First Prize, Sikorsky Challenge (2013) – “Intelligent Sensor Technologies”',
         'award-4': 'Scholarships of the Cabinet of Ministers and President of Ukraine',
+        'award-5': '<strong>Winner of the All-Ukrainian competition "Invention – 2008"</strong> (Odesa region) <span style="font-size: 0.85rem; margin-left: 0.5rem;"><a href="https://share.google/aimode/EdFSKnBIgXDBdLeXw" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">🔗 Document</a></span>',
         'patents-title': 'Patents (6)',
         'patent-1': 'Global network for automatic knowledge taking (UA 89025, 2014)',
         'patent-2': 'Method for identifying plant species (UA 86679, 2014)',
@@ -766,6 +763,7 @@ const translations = {
         'award-2': 'Премія НАН України в галузі досліджень молодих учених (2013)',
         'award-3': 'Перша премія Sikorsky Challenge (2013) – «Інтелектуальні сенсорні технології»',
         'award-4': 'Стипендії Кабінету Міністрів та Президента України',
+        'award-5': '<strong>Переможець Всеукраїнського конкурсу «Винахід – 2008»</strong> (Одеська область) <span style="font-size: 0.85rem; margin-left: 0.5rem;"><a href="https://share.google/aimode/EdFSKnBIgXDBdLeXw" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">🔗 Документ</a></span>',
         'patents-title': 'Патент (6)',
         'patent-1': 'Глобальна мережа автоматичного отримання знань (UA 89025, 2014)',
         'patent-2': 'Спосіб визначення виду рослин (UA 86679, 2014)',
@@ -812,80 +810,142 @@ const translations = {
     }
 };
 
-// ===== БАЗА ЗНАНЬ ДЛЯ FALLBACK =====
+// ============================================================
+//  ЛОКАЛЬНАЯ БАЗА ЗНАНИЙ
+// ============================================================
 let lastBotResponse = '';
+
 const knowledgeBase = [
-    { keywords_uk: ['привіт', 'вітаю', 'добрий день', 'здоров'], keywords_en: ['hello', 'hi', 'hey'], response_uk: 'Можете запитати про дослідження, ERC-проєкт, публікації, патенти, нагороди або контактну інформацію.', response_en: 'You can ask about Yevheniia Babenko\'s research, ERC project, publications, patents, awards, or contact information.' },
-    { keywords_uk: ['хто ви', 'хто ти', 'про себе', 'біографія', 'біо'], keywords_en: ['who are you', 'about you', 'biography', 'bio'], response_uk: 'Євгенія Бабенко — доктор філософії, старший науковий співробітник Інституту кібернетики ім. В.М. Глушкова НАН України. Її дослідження поєднують кібернетику, біологію, медичну інформатику, біосенсорні системи та нейро-символічний ШІ.', response_en: 'Yevheniia Babenko is a Ph.D. and Senior Research Fellow at the V.M. Glushkov Institute of Cybernetics of the NAS of Ukraine. Her research combines cybernetics, biology, medical informatics, biosensing systems, and neuro-symbolic AI.' },
-    { keywords_uk: ['бачення', 'мета', 'наукове бачення', 'vision'], keywords_en: ['vision', 'research vision', 'goal'], response_uk: 'Наукове бачення Євгенії Бабенко полягає у створенні розподіленої сенсорної цифрової інфраструктури для моделювання біологічних систем. Вона поєднує нейро-символічний ШІ, біосенсори та реляційні представлення, щоб перейти від описової біології до передбачуваного та керованого моделювання живих систем.', response_en: 'Yevheniia Babenko\'s research vision is to build a distributed sensor-based digital infrastructure for modelling biological systems. She integrates neuro-symbolic AI, biosensors, and relational representations to move biology from description toward predictive and controlled modelling of living systems.' },
-    { keywords_uk: ['сильний ші', 'штучний інтелект', 'agi', 'цифровий організм'], keywords_en: ['strong ai', 'artificial intelligence', 'agi', 'digital organism'], response_uk: 'Євгенія Бабенко розробляє концепцію цифрового організму як біологічно натхненної моделі для сильного ШІ та AGI. Ця архітектура поєднує символічне і субсимволічне навчання, а також ідеї когнітивних шарів взаємодії.', response_en: 'Yevheniia Babenko develops the concept of a digital organism as a biologically inspired model for Strong AI and AGI. This architecture combines symbolic and sub-symbolic learning with Cognitive Interaction Layers.' },
-    { keywords_uk: ['керована біологія', 'передбачувана біологія', 'цифрові двійники', 'digital twins'], keywords_en: ['controlled biology', 'predictive biology', 'digital twins'], response_uk: 'Керована біологія означає створення передбачувальних моделей живих систем за допомогою цифрових технологій. У цьому напрямі Євгенія Бабенко працює над інфраструктурою для цифрових двійників рослин і тварин та аналізу змін у реальному часі.', response_en: 'Controlled biology means creating predictive models of living systems using digital technologies. In this direction, Yevheniia Babenko works on infrastructure for digital twins of plants and animals and real-time change analysis.' },
-    { keywords_uk: ['erc', 'advanced grant', 'грант', 'фінансування', 'host', 'приймаюча установа'], keywords_en: ['erc', 'advanced grant', 'grant', 'funding', 'host'], response_uk: 'Євгенія Бабенко готує заявку на ERC Advanced Grant 2026. Її проєкт пов’язаний із сильним ШІ, біологічно натхненними архітектурами та цифровою інфраструктурою для моделювання біологічних систем. Для співпраці можна написати на sarahan@nas.gov.ua або evb@post.cz.', response_en: 'Yevheniia Babenko is preparing an ERC Advanced Grant 2026 application. The project is related to Strong AI, biologically inspired architectures, and digital infrastructure for modelling biological systems. For collaboration, please email sarahan@nas.gov.ua or evb@post.cz.' },
-    { keywords_uk: ['публікації', 'статті', 'наукові роботи', 'doi'], keywords_en: ['publications', 'papers', 'articles', 'doi'], response_uk: 'Публікації Євгенії Бабенко наведені у розділі «Вибрані публікації» на сайті та у PDF-файлі для завантаження. Серед ключових тем — Cognitive Interaction Layers for Neuro-Symbolic AI, Digital Organism, Abstract Biology, біосенсорні системи та поведінкові дослідження.', response_en: 'Yevheniia Babenko\'s publications are listed in the “Selected Publications” section and in the downloadable PDF. Key topics include Cognitive Interaction Layers for Neuro-Symbolic AI, Digital Organism, Abstract Biology, biosensing systems, and behavioural studies.' },
-    { keywords_uk: ['патенти', 'винаходи'], keywords_en: ['patents', 'inventions'], response_uk: 'Євгенія Бабенко є співавтором 6 патентів у галузі сенсорних технологій, діагностики рослин та інформаційних систем. Основні патенти: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.', response_en: 'Yevheniia Babenko is a co-author of 6 patents in sensor technologies, plant diagnostics, and information systems. Main patents: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.' },
-    { keywords_uk: ['нагороди', 'відзнаки', 'визнання', 'премія'], keywords_en: ['awards', 'prizes', 'recognition'], response_uk: 'Дослідження Євгенії Бабенко були відзначені Премією НАН України для молодих учених (2007), Премією НАН України в галузі досліджень молодих учених (2013), першим місцем у Sikorsky Challenge (2013), а також стипендіями Кабінету Міністрів і Президента України.', response_en: 'Yevheniia Babenko\'s research has been recognized with the NASU Award for Young Scientists (2007), the NASU Young Scientist Research Prize (2013), first prize at Sikorsky Challenge (2013), and scholarships from the Cabinet of Ministers and the President of Ukraine.' },
-    { keywords_uk: ['контакт', 'зв\'язатися', 'email', 'пошта'], keywords_en: ['contact', 'email', 'reach out'], response_uk: 'З Євгенією Бабенко можна зв’язатися електронною поштою: sarahan@nas.gov.ua або evb@post.cz. Також доступні посилання на ORCID та LinkedIn у верхній частині сайту.', response_en: 'You can reach Yevheniia Babenko by email: sarahan@nas.gov.ua or evb@post.cz. ORCID and LinkedIn links are also available in the site header.' },
-    { keywords_uk: ['сенсори', 'біосенсори', 'флуориметр', 'floratest', 'флоратест'], keywords_en: ['sensors', 'biosensors', 'fluorometer', 'floratest'], response_uk: 'Євгенія Бабенко була співрозробницею портативного флуориметра «Floratest» для експрес-діагностики стану рослин методом індукції флуоресценції хлорофілу. Ця робота отримала Премію НАН України для молодих учених у 2007 році та стала основою подальших досліджень у сфері біосенсорних систем.', response_en: 'Yevheniia Babenko co-developed the portable fluorometer “Floratest” for express diagnostics of plant condition using chlorophyll fluorescence induction. This work received the NASU Award for Young Scientists in 2007 and became a foundation for later biosensing research.' }
+    {
+        keywords_uk: ['привіт', 'вітаю', 'добрий день', 'здоров'],
+        keywords_en: ['hello', 'hi', 'hey'],
+        // НОВОЕ ПРИВЕТСТВИЕ (ассистент)
+        response_uk: 'Здравствуйте, вас вітає асистент Євгенії Бабенко. Я володію інформацією тільки в рамках наповнення цього сайту. Ви можете запитати про дослідження, ERC-проєкт, публікації, патенти, нагороди або контактну інформацію.',
+        response_en: 'Hello, you are greeted by the assistant of Yevheniia Babenko. I have information only within the content of this site. You can ask about research, ERC project, publications, patents, awards, or contact information.'
+    },
+    {
+        keywords_uk: ['хто ви', 'хто ти', 'про себе', 'біографія', 'біо'],
+        keywords_en: ['who are you', 'about you', 'biography', 'bio'],
+        response_uk: 'Я асистент Євгенії Бабенко. Вона — доктор філософії, старший науковий співробітник Інституту кібернетики ім. В.М. Глушкова НАН України. Її дослідження поєднують кібернетику, біологію, медичну інформатику, біосенсорні системи та нейро-символічний ШІ.',
+        response_en: 'I am the assistant of Yevheniia Babenko. She is a Ph.D. and Senior Research Fellow at the V.M. Glushkov Institute of Cybernetics of the NAS of Ukraine. Her research combines cybernetics, biology, medical informatics, biosensing systems, and neuro-symbolic AI.'
+    },
+    // Остальные записи базы знаний (без изменений)
+    {
+        keywords_uk: ['бачення', 'мета', 'наукове бачення', 'vision'],
+        keywords_en: ['vision', 'research vision', 'goal'],
+        response_uk: 'Наукове бачення Євгенії Бабенко полягає у створенні розподіленої сенсорної цифрової інфраструктури для моделювання біологічних систем. Вона поєднує нейро-символічний ШІ, біосенсори та реляційні представлення, щоб перейти від описової біології до передбачуваного та керованого моделювання живих систем.',
+        response_en: 'Yevheniia Babenko\'s research vision is to build a distributed sensor-based digital infrastructure for modelling biological systems. She integrates neuro-symbolic AI, biosensors, and relational representations to move biology from description toward predictive and controlled modelling of living systems.'
+    },
+    {
+        keywords_uk: ['сильний ші', 'штучний інтелект', 'agi', 'цифровий організм'],
+        keywords_en: ['strong ai', 'artificial intelligence', 'agi', 'digital organism'],
+        response_uk: 'Євгенія Бабенко розробляє концепцію цифрового організму як біологічно натхненної моделі для сильного ШІ та AGI. Ця архітектура поєднує символічне і субсимволічне навчання, а також ідеї когнітивних шарів взаємодії.',
+        response_en: 'Yevheniia Babenko develops the concept of a digital organism as a biologically inspired model for Strong AI and AGI. This architecture combines symbolic and sub-symbolic learning with Cognitive Interaction Layers.'
+    },
+    {
+        keywords_uk: ['керована біологія', 'передбачувана біологія', 'цифрові двійники', 'digital twins'],
+        keywords_en: ['controlled biology', 'predictive biology', 'digital twins'],
+        response_uk: 'Керована біологія означає створення передбачувальних моделей живих систем за допомогою цифрових технологій. У цьому напрямі Євгенія Бабенко працює над інфраструктурою для цифрових двійників рослин і тварин та аналізу змін у реальному часі.',
+        response_en: 'Controlled biology means creating predictive models of living systems using digital technologies. In this direction, Yevheniia Babenko works on infrastructure for digital twins of plants and animals and real-time change analysis.'
+    },
+    {
+        keywords_uk: ['erc', 'advanced grant', 'грант', 'фінансування', 'host', 'приймаюча установа'],
+        keywords_en: ['erc', 'advanced grant', 'grant', 'funding', 'host'],
+        response_uk: 'Євгенія Бабенко готує заявку на ERC Advanced Grant 2026. Її проєкт пов’язаний із сильним ШІ, біологічно натхненними архітектурами та цифровою інфраструктурою для моделювання біологічних систем. Для співпраці можна написати на sarahan@nas.gov.ua або evb@post.cz.',
+        response_en: 'Yevheniia Babenko is preparing an ERC Advanced Grant 2026 application. The project is related to Strong AI, biologically inspired architectures, and digital infrastructure for modelling biological systems. For collaboration, please email sarahan@nas.gov.ua or evb@post.cz.'
+    },
+    {
+        keywords_uk: ['публікації', 'статті', 'наукові роботи', 'doi'],
+        keywords_en: ['publications', 'papers', 'articles', 'doi'],
+        response_uk: 'Публікації Євгенії Бабенко наведені у розділі «Вибрані публікації» на сайті та у PDF-файлі для завантаження. Серед ключових тем — Cognitive Interaction Layers for Neuro-Symbolic AI, Digital Organism, Abstract Biology, біосенсорні системи та поведінкові дослідження.',
+        response_en: 'Yevheniia Babenko\'s publications are listed in the “Selected Publications” section and in the downloadable PDF. Key topics include Cognitive Interaction Layers for Neuro-Symbolic AI, Digital Organism, Abstract Biology, biosensing systems, and behavioural studies.'
+    },
+    {
+        keywords_uk: ['патенти', 'винаходи'],
+        keywords_en: ['patents', 'inventions'],
+        response_uk: 'Євгенія Бабенко є співавтором 6 патентів у галузі сенсорних технологій, діагностики рослин та інформаційних систем. Основні патенти: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.',
+        response_en: 'Yevheniia Babenko is a co-author of 6 patents in sensor technologies, plant diagnostics, and information systems. Main patents: UA 89025, UA 86679, UA 86759, UA 27131, UA 24908, UA 20131.'
+    },
+    {
+        keywords_uk: ['нагороди', 'відзнаки', 'визнання', 'премія'],
+        keywords_en: ['awards', 'prizes', 'recognition'],
+        response_uk: 'Дослідження Євгенії Бабенко були відзначені Премією НАН України для молодих учених (2007), Премією НАН України в галузі досліджень молодих учених (2013), першим місцем у Sikorsky Challenge (2013), а також стипендіями Кабінету Міністрів і Президента України. Також вона є переможцем Всеукраїнського конкурсу «Винахід – 2008» (Одеська область).',
+        response_en: 'Yevheniia Babenko\'s research has been recognized with the NASU Award for Young Scientists (2007), the NASU Young Scientist Research Prize (2013), first prize at Sikorsky Challenge (2013), and scholarships from the Cabinet of Ministers and the President of Ukraine. She is also a winner of the All-Ukrainian competition "Invention – 2008" (Odesa region).'
+    },
+    {
+        keywords_uk: ['контакт', 'зв\'язатися', 'email', 'пошта'],
+        keywords_en: ['contact', 'email', 'reach out'],
+        response_uk: 'З Євгенією Бабенко можна зв’язатися електронною поштою: sarahan@nas.gov.ua або evb@post.cz. Також доступні посилання на ORCID та LinkedIn у верхній частині сайту.',
+        response_en: 'You can reach Yevheniia Babenko by email: sarahan@nas.gov.ua or evb@post.cz. ORCID and LinkedIn links are also available in the site header.'
+    },
+    {
+        keywords_uk: ['сенсори', 'біосенсори', 'флуориметр', 'floratest', 'флоратест'],
+        keywords_en: ['sensors', 'biosensors', 'fluorometer', 'floratest'],
+        response_uk: 'Євгенія Бабенко була співрозробницею портативного флуориметра «Floratest» для експрес-діагностики стану рослин методом індукції флуоресценції хлорофілу. Ця робота отримала Премію НАН України для молодих учених у 2007 році та стала основою подальших досліджень у сфері біосенсорних систем.',
+        response_en: 'Yevheniia Babenko co-developed the portable fluorometer “Floratest” for express diagnostics of plant condition using chlorophyll fluorescence induction. This work received the NASU Award for Young Scientists in 2007 and became a foundation for later biosensing research.'
+    }
 ];
 
-// ===== НОВАЯ ФУНКЦИЯ-АССИСТЕНТ =====
-async function getBotResponse(userText, lang) {
+// ============================================================
+//  ЛОГИКА ОТВЕТОВ (локальная)
+// ============================================================
+function getBotResponse(userText, lang) {
     const lower = userText.toLowerCase().trim();
-    if (!lower) return lang === 'uk' ? 'Напишіть, будь ласка, ваше запитання.' : 'Please type your question.';
-    try {
-        const prompt = lang === 'uk' 
-            ? `Ти персональний асистент дослідниці Євгенії Бабенко. Відповідай на питання про її роботу, сильний ШІ, біологію, сенсори, патенти, публікації, проєкти, нагороди. Відповідай українською мовою. Питання: ${userText}`
-            : `You are a personal assistant of Dr. Yevheniia Babenko. Answer questions about her work, Strong AI, biology, sensors, patents, publications, projects, awards. Answer in English. Question: ${userText}`;
-        const response = await fetch('https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ inputs: prompt, parameters: { max_new_tokens: 400, temperature: 0.7 } })
-        });
-        if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-        const data = await response.json();
-        let reply = data.generated_text || '';
-        if (reply.startsWith(prompt)) reply = reply.slice(prompt.length).trim();
-        if (!reply) throw new Error('Empty reply');
-        return reply;
-    } catch (error) {
-        console.warn('Hugging Face API error, using fallback:', error);
-        return fallbackResponse(userText, lang);
+    if (!lower) {
+        return lang === 'uk' ? 'Напишіть, будь ласка, ваше запитання.' : 'Please type your question.';
     }
-}
 
-function fallbackResponse(userText, lang) {
-    const lower = userText.toLowerCase().trim();
-    if (!lower) return lang === 'uk' ? 'Напишіть, будь ласка, ваше запитання.' : 'Please type your question.';
     const words = lower.replace(/[^\p{L}\p{N}\s]/gu, '').split(/\s+/).filter(w => w.length > 1);
     const keywordsKey = lang === 'uk' ? 'keywords_uk' : 'keywords_en';
     const responseKey = lang === 'uk' ? 'response_uk' : 'response_en';
-    let bestMatch = null, bestScore = 0;
+
+    let bestMatch = null;
+    let bestScore = 0;
+
     for (const entry of knowledgeBase) {
         const keywords = entry[keywordsKey] || [];
         let score = 0;
         for (const kw of keywords) {
             const kwLower = kw.toLowerCase();
-            if (lower.includes(kwLower)) score += 5;
-            else {
+            if (lower.includes(kwLower)) {
+                score += 5;
+            } else {
                 const kwWords = kwLower.split(/\s+/);
                 for (const w of words) {
-                    if (kwWords.some(kwW => kwW.includes(w) || w.includes(kwW))) score += 1;
+                    if (kwWords.some(kwW => kwW.includes(w) || w.includes(kwW))) {
+                        score += 1;
+                    }
                 }
             }
         }
-        if (score > bestScore) { bestScore = score; bestMatch = entry[responseKey]; }
+        if (score > bestScore) {
+            bestScore = score;
+            bestMatch = entry[responseKey];
+        }
     }
-    let answer = (bestScore > 2 && bestMatch) ? bestMatch : 
-        (lang === 'uk' ? 'Точної відповіді у локальній базі немає. Напишіть, будь ласка: sarahan@nas.gov.ua або evb@post.cz.' :
-        'No exact answer was found in the local site knowledge base. Please email sarahan@nas.gov.ua or evb@post.cz.');
+
+    let answer;
+    if (bestScore > 2 && bestMatch) {
+        answer = bestMatch;
+    } else {
+        answer = lang === 'uk'
+            ? 'Точної відповіді у базі немає. Напишіть, будь ласка: sarahan@nas.gov.ua або evb@post.cz.'
+            : 'No exact answer was found. Please email sarahan@nas.gov.ua or evb@post.cz.';
+    }
+
+    // Убираем повтор одинакового ответа
     if (answer === lastBotResponse) {
-        answer = lang === 'uk' ? 'Це саме питання вже було опрацьовано. Спробуйте уточнити тему.' :
-            'This topic was already answered. Try narrowing the question.';
+        answer = lang === 'uk'
+            ? 'Це питання вже було опрацьовано. Спробуйте уточнити тему.'
+            : 'This topic was already answered. Try narrowing the question.';
     }
     lastBotResponse = answer;
     return answer;
 }
 
+// ============================================================
+//  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+// ============================================================
 function detectLanguage(text) {
     const ukrainianChars = /[а-щА-ЩЬьЮюЯяІіЄєЇїҐґ]/;
     return ukrainianChars.test(text) ? 'uk' : 'en';
@@ -933,7 +993,10 @@ function appendMessage(text, sender) {
     messagesEl.scrollTop = messagesEl.scrollHeight;
 }
 
-async function handleSend() {
+// ============================================================
+//  ОТПРАВКА СООБЩЕНИЯ
+// ============================================================
+function handleSend() {
     const inputEl = document.getElementById('chat-input');
     const messagesEl = document.getElementById('chat-messages');
     const text = inputEl.value.trim();
@@ -941,6 +1004,7 @@ async function handleSend() {
     appendMessage(text, 'user');
     inputEl.value = '';
     inputEl.disabled = true;
+
     const lang = detectLanguage(text);
     const typingDiv = document.createElement('div');
     typingDiv.className = 'msg-typing';
@@ -948,77 +1012,120 @@ async function handleSend() {
     else typingDiv.textContent = 'Bot is typing...';
     messagesEl.appendChild(typingDiv);
     messagesEl.scrollTop = messagesEl.scrollHeight;
-    setTimeout(async () => {
+
+    setTimeout(() => {
         if (typingDiv.parentNode) typingDiv.remove();
-        const reply = await getBotResponse(text, lang);
+        const reply = getBotResponse(text, lang);
         appendMessage(reply, 'bot');
         inputEl.disabled = false;
         inputEl.focus();
     }, 600 + Math.random() * 400);
 }
 
+// ============================================================
+//  ФИЛЬТРЫ ПУБЛИКАЦИЙ
+// ============================================================
 function setupFilters() {
     const buttons = document.querySelectorAll('.pub-filters button');
     const items = document.querySelectorAll('.pub-item');
+    
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
             buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const filter = btn.dataset.filter;
             items.forEach(item => {
-                if (filter === 'all' || item.classList.contains(filter)) item.classList.remove('hidden');
-                else item.classList.add('hidden');
+                if (filter === 'all' || item.classList.contains(filter)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
             });
         });
     });
 }
 
+// ============================================================
+//  PDF ГЕНЕРАЦИЯ
+// ============================================================
 function setupPdf() {
     const btn = document.getElementById('download-pdf-btn');
     if (!btn) return;
     btn.addEventListener('click', () => {
         const element = document.getElementById('page-content');
-        const opt = { margin: [0.5,0.5,0.5,0.5], filename: 'Yevheniia_Babenko_Academic_Profile.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, letterRendering: true }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } };
+        const opt = {
+            margin:        [0.5, 0.5, 0.5, 0.5],
+            filename:      'Yevheniia_Babenko_Academic_Profile.pdf',
+            image:         { type: 'jpeg', quality: 0.98 },
+            html2canvas:   { scale: 2, letterRendering: true },
+            jsPDF:         { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
         html2pdf().set(opt).from(element).save();
     });
 }
 
+// ============================================================
+//  ИНИЦИАЛИЗАЦИЯ
+// ============================================================
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('lang') || 'en';
     setLanguage(savedLang);
+
     const toggleBtn = document.getElementById('chat-toggle');
     const closeBtn = document.getElementById('chat-close');
     const windowEl = document.getElementById('chat-window');
     const sendBtn = document.getElementById('chat-send');
     const inputEl = document.getElementById('chat-input');
+
     toggleBtn.addEventListener('click', () => {
         const isOpen = windowEl.classList.toggle('open');
         if (isOpen) {
             inputEl.focus();
             if (document.getElementById('chat-messages').children.length === 0) {
                 const lang = document.documentElement.lang || 'en';
-                let greeting = lang === 'uk' ? 'Запитайте про дослідження, проєкт ERC, публікації, патенти або контакти.' : 'Ask about research, the ERC project, publications, patents, or contact details.';
+                let greeting;
+                if (lang === 'uk') {
+                    greeting = 'Здравствуйте, вас вітає асистент Євгенії Бабенко. Я володію інформацією тільки в рамках наповнення цього сайту. Запитайте про дослідження, проєкт ERC, публікації, патенти або контакти.';
+                } else {
+                    greeting = 'Hello, you are greeted by the assistant of Yevheniia Babenko. I have information only within the content of this site. Ask about research, the ERC project, publications, patents, or contact details.';
+                }
                 appendMessage(greeting, 'bot');
             }
         }
     });
-    closeBtn.addEventListener('click', () => { windowEl.classList.remove('open'); });
+
+    closeBtn.addEventListener('click', () => {
+        windowEl.classList.remove('open');
+    });
+
     sendBtn.addEventListener('click', handleSend);
-    inputEl.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+    inputEl.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSend();
+    });
+
     document.addEventListener('click', (e) => {
         const isChat = windowEl.contains(e.target) || toggleBtn.contains(e.target);
-        if (!isChat && windowEl.classList.contains('open')) windowEl.classList.remove('open');
+        if (!isChat && windowEl.classList.contains('open')) {
+            windowEl.classList.remove('open');
+        }
     });
+
     document.querySelectorAll('.lang-switcher button').forEach(btn => {
-        btn.addEventListener('click', () => { setLanguage(btn.getAttribute('data-lang')); });
+        btn.addEventListener('click', () => {
+            setLanguage(btn.getAttribute('data-lang'));
+        });
     });
+
     setupFilters();
     setupPdf();
+
     console.log('✅ Сайт и чат-бот успешно загружены!');
 });
 </script>
 </body>
 </html>
+
+
 
 
 
