@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dr. Yevheniia Babenko · PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Yevheniia Babenko",
+            "jobTitle": "Senior Research Fellow",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "V.M. Glushkov Institute of Cybernetics"
+            },
+            "url": "https://evzib.github.io/babenko/",
+            "sameAs": [
+                "https://orcid.org/0000-0002-0983-9713",
+                "https://www.linkedin.com/in/yevheniia-babenko"
+            ]
+        }
+    </script>
     <style>
         :root {
             --bg: #ffffff;
@@ -13,6 +31,8 @@
             --border: #dddfe3;
             --accent: #0b2a4a;
             --accent-light: #eaeef3;
+            --shadow: 0 4px 20px rgba(0,0,0,0.04);
+            --radius: 24px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -27,9 +47,10 @@
             margin: 0 auto;
             background: #fff;
             padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
+        /* --- Шапка --- */
         .header {
             display: flex;
             align-items: center;
@@ -117,6 +138,8 @@
             color: #fff;
         }
         .lang-switcher button:not(.active):hover { background: #d0d9e6; }
+
+        /* --- Основные стили --- */
         h2 {
             font-size: 1.8rem;
             font-weight: 600;
@@ -194,6 +217,58 @@
         .project-3-link a:hover {
             border-bottom: 1px solid var(--accent);
         }
+
+        /* --- Фильтры публикаций --- */
+        .pub-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .pub-filters button {
+            background: var(--light);
+            border: 1px solid var(--border);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .pub-filters button.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        .pub-filters button:hover:not(.active) {
+            background: #d0d9e6;
+        }
+        .pub-item {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .pub-item.hidden {
+            display: none;
+        }
+
+        /* --- Кнопка PDF --- */
+        .pdf-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.6rem 1.8rem;
+            border-radius: 30px;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin: 1rem 0 0.5rem;
+        }
+        .pdf-btn:hover {
+            background: #1a3f66;
+        }
+
+        /* --- Адаптив --- */
         @media (max-width: 650px) {
             .container { padding: 1.5rem; }
             .header { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
@@ -205,11 +280,154 @@
         @media (max-width: 450px) {
             .header-text .contact { flex-direction: column; gap: 0.3rem; align-items: center; }
         }
+
+        /* --- Стили чат-бота (улучшены) --- */
+        #chat-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0b2a4a;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(11, 42, 74, 0.35);
+            transition: transform 0.2s, background 0.2s;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #chat-toggle:hover { transform: scale(1.08); background: #1a3f66; }
+        #chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            width: 380px;
+            max-width: calc(100vw - 48px);
+            max-height: 520px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+            border: 1px solid #e2e6ec;
+            display: none;
+            flex-direction: column;
+            z-index: 9998;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+        }
+        #chat-window.open { display: flex; }
+        #chat-header {
+            background: #0b2a4a;
+            color: #fff;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1rem;
+            border-bottom: 1px solid #1a3f66;
+        }
+        #chat-header button {
+            background: transparent;
+            border: none;
+            color: #cbd5e1;
+            font-size: 22px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 4px;
+        }
+        #chat-header button:hover { color: #fff; }
+        #chat-messages {
+            flex: 1;
+            padding: 16px 18px;
+            overflow-y: auto;
+            background: #f8f9fc;
+            min-height: 200px;
+            max-height: 340px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        #chat-messages .msg-user { text-align: right; margin: 6px 0 10px; }
+        #chat-messages .msg-user span {
+            background: #0b2a4a;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 18px 18px 4px 18px;
+            display: inline-block;
+            max-width: 85%;
+            word-wrap: break-word;
+        }
+        #chat-messages .msg-bot { text-align: left; margin: 6px 0 10px; }
+        #chat-messages .msg-bot span {
+            background: #e9edf4;
+            color: #1a2a3a;
+            padding: 8px 14px;
+            border-radius: 18px 18px 18px 4px;
+            display: inline-block;
+            max-width: 85%;
+            word-wrap: break-word;
+        }
+        #chat-messages .msg-typing {
+            color: #6b7a8d;
+            font-size: 0.9rem;
+            padding: 6px 0 10px;
+            font-style: italic;
+        }
+        #chat-input-area {
+            display: flex;
+            border-top: 1px solid #e2e6ec;
+            background: #fff;
+            padding: 6px 10px 6px 16px;
+            align-items: center;
+        }
+        #chat-input-area input {
+            flex: 1;
+            border: none;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            outline: none;
+            background: transparent;
+            color: #1e2a3a;
+        }
+        #chat-input-area input::placeholder { color: #9aa7b9; }
+        #chat-input-area button {
+            background: #0b2a4a;
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        #chat-input-area button:hover { background: #1a3f66; }
+        @media (max-width: 480px) {
+            #chat-window {
+                bottom: 80px;
+                right: 12px;
+                max-width: calc(100vw - 24px);
+                max-height: 460px;
+            }
+            #chat-messages { max-height: 280px; }
+            #chat-toggle {
+                bottom: 16px;
+                right: 16px;
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="page-content">
 
     <!-- ===== HEADER ===== -->
     <div class="header">
@@ -326,15 +544,21 @@
 
     <!-- ===== PUBLICATIONS ===== -->
     <h2 data-lang="pubs-title">Selected Publications</h2>
-    <ul class="contrib-list">
-        <li data-lang="pub-1"><strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a></li>
-        <li data-lang="pub-2"><strong>Babenko Y., Romanov V.</strong> Cognitive Interaction Layers for Neuro-Symbolic AI. <em>ProfIT AI 2025</em>, Liverpool, UK. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a></li>
-        <li data-lang="pub-3"><strong>Babenko Y.</strong> Bioinspired Models for Metaheuristic Optimization. <em>TechRxiv</em>, 2025. <a href="https://doi.org/10.36227/techrXiv.175693302.22402426/v1" target="_blank">DOI</a></li>
-        <li data-lang="pub-4"><strong>Babenko Y.</strong> The Path to Artificial General Intelligence Through the Concept of a Digital Organism. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1612.v1" target="_blank">DOI</a></li>
-        <li data-lang="pub-5"><strong>Babenko Y.</strong> Abstract Biology: Toward a Relational Framework for Life. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1958.v1" target="_blank">DOI</a></li>
-        <li data-lang="pub-6"><strong>Babenko Y., Romanov V.</strong> Intelligent Methods in Behavioral Studies on Animal Models. <em>ProfIT AI 2024</em>, Cambridge, MA, USA. <a href="https://ceur-ws.org/Vol-3777/paper17.pdf" target="_blank">PDF</a></li>
-        <li data-lang="pub-7"><strong>Babenko Y.</strong> Modern Tools and Market Dynamics in Behavioral Research. <em>IJ ITA</em>, Vol. 32, Issue 2, pp. 146-176, 2025. <a href="https://doi.org/10.54521/ijita32-02-p05" target="_blank">DOI</a></li>
-        <li data-lang="pub-8"><strong>Babenko Y.</strong> Edge Intelligent Biosensing Systems with Dual Optimization. <em>ICISN 2025</em>, Antalya, Türkiye. <a href="https://doi.org/10.58190/icisna.2025.142" target="_blank">DOI</a></li>
+    <div class="pub-filters">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="ai">AI</button>
+        <button data-filter="biology">Biology</button>
+        <button data-filter="sensors">Sensors</button>
+    </div>
+    <ul class="contrib-list" id="publications-list">
+        <li class="pub-item sensors" data-lang="pub-1"><strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a></li>
+        <li class="pub-item ai" data-lang="pub-2"><strong>Babenko Y., Romanov V.</strong> Cognitive Interaction Layers for Neuro-Symbolic AI. <em>ProfIT AI 2025</em>, Liverpool, UK. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a></li>
+        <li class="pub-item ai" data-lang="pub-3"><strong>Babenko Y.</strong> Bioinspired Models for Metaheuristic Optimization. <em>TechRxiv</em>, 2025. <a href="https://doi.org/10.36227/techrXiv.175693302.22402426/v1" target="_blank">DOI</a></li>
+        <li class="pub-item ai biology" data-lang="pub-4"><strong>Babenko Y.</strong> The Path to Artificial General Intelligence Through the Concept of a Digital Organism. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1612.v1" target="_blank">DOI</a></li>
+        <li class="pub-item biology" data-lang="pub-5"><strong>Babenko Y.</strong> Abstract Biology: Toward a Relational Framework for Life. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1958.v1" target="_blank">DOI</a></li>
+        <li class="pub-item ai" data-lang="pub-6"><strong>Babenko Y., Romanov V.</strong> Intelligent Methods in Behavioral Studies on Animal Models. <em>ProfIT AI 2024</em>, Cambridge, MA, USA. <a href="https://ceur-ws.org/Vol-3777/paper17.pdf" target="_blank">PDF</a></li>
+        <li class="pub-item ai biology sensors" data-lang="pub-7"><strong>Babenko Y.</strong> Modern Tools and Market Dynamics in Behavioral Research. <em>IJ ITA</em>, Vol. 32, Issue 2, pp. 146-176, 2025. <a href="https://doi.org/10.54521/ijita32-02-p05" target="_blank">DOI</a></li>
+        <li class="pub-item sensors" data-lang="pub-8"><strong>Babenko Y.</strong> Edge Intelligent Biosensing Systems with Dual Optimization. <em>ICISN 2025</em>, Antalya, Türkiye. <a href="https://doi.org/10.58190/icisna.2025.142" target="_blank">DOI</a></li>
     </ul>
     <p style="margin-top: 1rem;">
         <i class="fas fa-file-pdf" style="color: var(--accent);"></i>
@@ -415,7 +639,7 @@
         </a>
     </p>
     <p style="font-size: 0.95rem; color: #555;">
-        <i class="fas fa-phone-alt" style="color: var(--accent);"></i> +420 ... <span data-lang="phone-note">(upon request)</span>
+        <i class="fas fa-phone-alt" style="color: var(--accent);"></i> <span data-lang="phone">+420 ... (upon request)</span>
     </p>
     <p style="font-size: 0.95rem; margin-top: 0.5rem;">
         <i class="fas fa-id-card" style="color: var(--accent);"></i>
@@ -441,155 +665,28 @@
         <li><a href="https://zenodo.org" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">Zenodo – European Research Data Repository</a></li>
     </ul>
 
+    <!-- ===== тлачитко PDF ===== -->
+    <div style="text-align: center; margin-top: 2rem;">
+        <button class="pdf-btn" id="download-pdf-btn"><i class="fas fa-file-pdf"></i> <span data-lang="pdf-btn">Save page as PDF</span></button>
+    </div>
+
     <!-- ===== FOOTER ===== -->
     <div class="footer">
         <span data-lang="footer">&copy; 2026 Yevheniia Babenko – Built for ERC Advanced Grant</span>
+        <!-- Счетчик посещений (аналитика) -->
+        <div style="margin-top: 10px;">
+            <a href="https://info.flagcounter.com/5X8B" target="_blank">
+                <img src="https://s01.flagcounter.com/count2/5X8B/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0">
+            </a>
+        </div>
     </div>
 
 </div>
 
 <!-- ============================================================ -->
-<!-- === CHATBOT === -->
+<!-- === ЧАТ-БОТ === -->
 <!-- ============================================================ -->
-<style>
-    #chat-toggle {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        background: #0b2a4a;
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-        cursor: pointer;
-        box-shadow: 0 6px 20px rgba(11, 42, 74, 0.35);
-        transition: transform 0.2s, background 0.2s;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    #chat-toggle:hover { transform: scale(1.08); background: #1a3f66; }
-    #chat-window {
-        position: fixed;
-        bottom: 100px;
-        right: 24px;
-        width: 380px;
-        max-width: calc(100vw - 48px);
-        max-height: 520px;
-        background: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
-        border: 1px solid #e2e6ec;
-        display: none;
-        flex-direction: column;
-        z-index: 9998;
-        font-family: 'Segoe UI', Roboto, sans-serif;
-        overflow: hidden;
-    }
-    #chat-window.open { display: flex; }
-    #chat-header {
-        background: #0b2a4a;
-        color: #fff;
-        padding: 14px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 500;
-        font-size: 1rem;
-        border-bottom: 1px solid #1a3f66;
-    }
-    #chat-header button {
-        background: transparent;
-        border: none;
-        color: #cbd5e1;
-        font-size: 22px;
-        cursor: pointer;
-        line-height: 1;
-        padding: 0 4px;
-    }
-    #chat-header button:hover { color: #fff; }
-    #chat-messages {
-        flex: 1;
-        padding: 16px 18px;
-        overflow-y: auto;
-        background: #f8f9fc;
-        min-height: 200px;
-        max-height: 340px;
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-    #chat-messages .msg-user { text-align: right; margin: 6px 0 10px; }
-    #chat-messages .msg-user span {
-        background: #0b2a4a;
-        color: #fff;
-        padding: 8px 14px;
-        border-radius: 18px 18px 4px 18px;
-        display: inline-block;
-        max-width: 85%;
-        word-wrap: break-word;
-    }
-    #chat-messages .msg-bot { text-align: left; margin: 6px 0 10px; }
-    #chat-messages .msg-bot span {
-        background: #e9edf4;
-        color: #1a2a3a;
-        padding: 8px 14px;
-        border-radius: 18px 18px 18px 4px;
-        display: inline-block;
-        max-width: 85%;
-        word-wrap: break-word;
-    }
-    #chat-messages .msg-typing {
-        color: #6b7a8d;
-        font-size: 0.9rem;
-        padding: 6px 0 10px;
-        font-style: italic;
-    }
-    #chat-input-area {
-        display: flex;
-        border-top: 1px solid #e2e6ec;
-        background: #fff;
-        padding: 6px 10px 6px 16px;
-        align-items: center;
-    }
-    #chat-input-area input {
-        flex: 1;
-        border: none;
-        padding: 10px 0;
-        font-size: 0.95rem;
-        outline: none;
-        background: transparent;
-        color: #1e2a3a;
-    }
-    #chat-input-area input::placeholder { color: #9aa7b9; }
-    #chat-input-area button {
-        background: #0b2a4a;
-        color: #fff;
-        border: none;
-        padding: 8px 18px;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background 0.2s;
-        white-space: nowrap;
-    }
-    #chat-input-area button:hover { background: #1a3f66; }
-    @media (max-width: 480px) {
-        #chat-window {
-            bottom: 80px;
-            right: 12px;
-            max-width: calc(100vw - 24px);
-            max-height: 460px;
-        }
-        #chat-messages { max-height: 280px; }
-    }
-</style>
-
 <button id="chat-toggle" aria-label="Open chat">💬</button>
-
 <div id="chat-window">
     <div id="chat-header">
         <span id="chat-title">🤖 Ask about my work</span>
@@ -602,9 +699,13 @@
     </div>
 </div>
 
+<!-- ============================================================ -->
+<!-- === Бібліотеки та СКРіпти === -->
+<!-- ============================================================ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 // ============================================================
-//  TRANSLATIONS
+//  транслейт
 // ============================================================
 const translations = {
     en: {
@@ -669,8 +770,9 @@ const translations = {
         'project-4-links': 'Record:',
         'contact-title': 'Contact',
         'download-cv': 'Download full CV (ERC format)',
-        'phone-note': '(upon request)',
+        'phone': '+420 ... (upon request)',
         'initiatives-links-title': 'International Research Initiatives',
+        'pdf-btn': 'Save page as PDF',
         footer: '© 2026 Yevheniia Babenko – Built for ERC Advanced Grant'
     },
     uk: {
@@ -735,14 +837,15 @@ const translations = {
         'project-4-links': 'Запис:',
         'contact-title': 'Контакти',
         'download-cv': 'Завантажити повне CV (формат ERC)',
-        'phone-note': '(за запитом)',
+        'phone': '+420 ... (за запитом)',
         'initiatives-links-title': 'Міжнародні наукові ініціативи',
+        'pdf-btn': 'Зберегти сторінку як PDF',
         footer: '© 2026 Євгенія Бабенко – Створено для ERC Advanced Grant'
     }
 };
 
 // ============================================================
-//  KNOWLEDGE BASE
+//  БАЗА знань ДЛЯ ЧАТ-БОТА
 // ============================================================
 let lastBotResponse = '';
 
@@ -751,7 +854,7 @@ const knowledgeBase = [
         keywords_uk: ['привіт', 'вітаю', 'добрий день', 'здоров'],
         keywords_en: ['hello', 'hi', 'hey'],
         response_uk: 'Можете запитати про дослідження, ERC-проєкт, публікації, патенти, нагороди або контактну інформацію.',
-        response_en: 'You can ask about Yevheniia Babenko's research, ERC project, publications, patents, awards, or contact information.'
+        response_en: 'You can ask about Yevheniia Babenko\'s research, ERC project, publications, patents, awards, or contact information.'
     },
     {
         keywords_uk: ['хто ви', 'хто ти', 'про себе', 'біографія', 'біо'],
@@ -816,7 +919,7 @@ const knowledgeBase = [
 ];
 
 // ============================================================
-//  FUNCTIONS
+//  ФУНКЦії
 // ============================================================
 function detectLanguage(text) {
     const ukrainianChars = /[а-щА-ЩЬьЮюЯяІіЄєЇїҐґ]/;
@@ -943,12 +1046,56 @@ function handleSend() {
 }
 
 // ============================================================
-//  INIT & EVENTS
+//  Фільтри
+// ============================================================
+function setupFilters() {
+    const buttons = document.querySelectorAll('.pub-filters button');
+    const items = document.querySelectorAll('.pub-item');
+    
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            items.forEach(item => {
+                if (filter === 'all' || item.classList.contains(filter)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    });
+}
+
+// ============================================================
+//  PDF 
+// ============================================================
+function setupPdf() {
+    const btn = document.getElementById('download-pdf-btn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        const element = document.getElementById('page-content');
+        const opt = {
+            margin:        [0.5, 0.5, 0.5, 0.5],
+            filename:      'Yevheniia_Babenko_Academic_Profile.pdf',
+            image:         { type: 'jpeg', quality: 0.98 },
+            html2canvas:   { scale: 2, letterRendering: true },
+            jsPDF:         { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(element).save();
+    });
+}
+
+// ============================================================
+//  ІНІЦІАЛІЗАЦІЯ
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Язык
     const savedLang = localStorage.getItem('lang') || 'en';
     setLanguage(savedLang);
 
+    // Чат-бот
     const toggleBtn = document.getElementById('chat-toggle');
     const closeBtn = document.getElementById('chat-close');
     const windowEl = document.getElementById('chat-window');
@@ -985,13 +1132,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Перемикатель
     document.querySelectorAll('.lang-switcher button').forEach(btn => {
         btn.addEventListener('click', () => {
             setLanguage(btn.getAttribute('data-lang'));
         });
     });
 
-    console.log('✅ Site and chatbot loaded!');
+    // Фильтры
+    setupFilters();
+
+    // PDF
+    setupPdf();
+
+    console.log('✅ Сайт та чат-бот!');
 });
 </script>
 </body>
