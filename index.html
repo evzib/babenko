@@ -758,7 +758,7 @@ const translations = {
         'awards-title': 'Нагороди та відзнаки',
         'award-1': 'Премія НАН України для молодих учених (2007)',
         'award-2': 'Премія НАН України в галузі досліджень молодих учених (2013)',
-        'award-3': 'Перша премія, <a href="https://kpi.ua/uk/13-10-17" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">II Всеукраїнський фестиваль інноваційних проектів "Sikorsky Challenge 2013"</a> — проект "Інтелектуальні сенсорні технології для експрес-діагностики сільськогосподарських культур"',
+        'award-3': 'Перша премія, <a href="https://kpi.ua/13-10-17" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">II Всеукраїнський фестиваль інноваційних проектів "Sikorsky Challenge 2013"</a> — проект "Інтелектуальні сенсорні технології для експрес-діагностики сільськогосподарських культур"',
         'award-4': 'Стипендії Кабінету Міністрів та Президента України',
         'award-5': '<strong>Переможець Всеукраїнського конкурсу «Винахід – 2008»</strong> (Одеська область) <span style="font-size: 0.85rem; margin-left: 0.5rem;"><a href="https://share.google/aimode/EdFSKnBIgXDBdLeXw" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">🔗 Документ</a></span>',
         'patents-title': 'Патент (6)',
@@ -808,7 +808,7 @@ const translations = {
 };
 
 // ============================================================
-//  ЛОКАЛЬНАЯ БАЗА ЗНАНИЙ
+//  data base
 // ============================================================
 let lastBotResponse = '';
 
@@ -884,7 +884,7 @@ const knowledgeBase = [
 ];
 
 // ============================================================
-//  ЛОГИКА ОТВЕТОВ (локальная)
+//  answer
 // ============================================================
 function getBotResponse(userText, lang) {
     const lower = userText.toLowerCase().trim();
@@ -941,7 +941,7 @@ function getBotResponse(userText, lang) {
 }
 
 // ============================================================
-//  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+//  dop function
 // ============================================================
 function detectLanguage(text) {
     const ukrainianChars = /[а-щА-ЩЬьЮюЯяІіЄєЇїҐґ]/;
@@ -991,7 +991,7 @@ function appendMessage(text, sender) {
 }
 
 // ============================================================
-//  ОТПРАВКА СООБЩЕНИЯ
+//  send massege
 // ============================================================
 function handleSend() {
     const inputEl = document.getElementById('chat-input');
@@ -1020,7 +1020,7 @@ function handleSend() {
 }
 
 // ============================================================
-//  ФИЛЬТРЫ ПУБЛИКАЦИЙ
+//  filters
 // ============================================================
 function setupFilters() {
     const buttons = document.querySelectorAll('.pub-filters button');
@@ -1043,7 +1043,7 @@ function setupFilters() {
 }
 
 // ============================================================
-//  PDF ГЕНЕРАЦИЯ
+//  PDF gen
 // ============================================================
 function setupPdf() {
     const btn = document.getElementById('download-pdf-btn');
@@ -1062,7 +1062,7 @@ function setupPdf() {
 }
 
 // ============================================================
-//  ИНИЦИАЛИЗАЦИЯ
+//  ini
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('lang') || 'en';
@@ -1116,7 +1116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFilters();
     setupPdf();
 
-    console.log('✅ Сайт и чат-бот успешно загружены!');
+    console.log('✅ donn');
 });
 </script>
 </body>
