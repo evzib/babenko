@@ -401,12 +401,42 @@
                 font-size: 22px;
             }
         }
+        /* ===== Стили для печати / PDF ===== */
+@media print {
+    #chat-window, #chat-toggle, .lang-switcher {
+        display: none !important;
+    }
+    body {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #fff !important;
+    }
+    .container {
+        box-shadow: none !important;
+        padding: 20px !important;
+        max-width: 100% !important;
+    }
+    #pdf-content {
+        padding: 20px !important;
+        background: #fff !important;
+    }
+    h2 {
+        page-break-after: avoid;
+    }
+    a {
+        text-decoration: underline !important;
+        color: #0b2a4a !important;
+    }
+    ul, .contrib-list {
+        page-break-inside: avoid;
+    }
+}
     </style>
 </head>
 <body>
 
-<div class="container" id="page-content">
-
+<div class="container" id="page-content"> 
+<div id="pdf-content" style="background: #ffffff; padding: 20px;">
     <div class="header">
         <div class="avatar">
             <img src="your-photo.jpg" alt="Yevheniia Babenko" />
@@ -520,7 +550,10 @@
         <button data-filter="sensors">Sensors</button>
     </div>
     <ul class="contrib-list" id="publications-list">
-        <li class="pub-item sensors" data-lang="pub-1"><strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a></li>
+       <li class="pub-item sensors" data-lang="pub-1" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+    <span style="flex: 1;"><strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a></span>
+    <a href="presentation.html" target="_blank" style="display: inline-block; background: var(--accent); color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background 0.2s;">📊 Presentation</a>
+</li>
         <li class="pub-item ai" data-lang="pub-2"><strong>Babenko Y., Romanov V.</strong> Cognitive Interaction Layers for Neuro-Symbolic AI. <em>ProfIT AI 2025</em>, Liverpool, UK. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a></li>
         <li class="pub-item ai" data-lang="pub-3"><strong>Babenko Y.</strong> Bioinspired Models for Metaheuristic Optimization. <em>TechRxiv</em>, 2025. <a href="https://doi.org/10.36227/techrXiv.175693302.22402426/v1" target="_blank">DOI</a></li>
         <li class="pub-item ai biology" data-lang="pub-4"><strong>Babenko Y.</strong> The Path to Artificial General Intelligence Through the Concept of a Digital Organism. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1612.v1" target="_blank">DOI</a></li>
@@ -626,6 +659,7 @@
     </ul>
 
     <div style="text-align: center; margin-top: 2rem;">
+       </div>
         <button class="pdf-btn" id="download-pdf-btn"><i class="fas fa-file-pdf"></i> <span data-lang="pdf-btn">Save page as PDF</span></button>
     </div>
 
@@ -1032,26 +1066,6 @@ function setupFilters() {
         });
     });
 }
-
-// ============================================================
-//  PDF gen
-// ============================================================
-function setupPdf() {
-    const btn = document.getElementById('download-pdf-btn');
-    if (!btn) return;
-    btn.addEventListener('click', () => {
-        const element = document.getElementById('page-content');
-        const opt = {
-            margin:        [0.5, 0.5, 0.5, 0.5],
-            filename:      'Yevheniia_Babenko_Academic_Profile.pdf',
-            image:         { type: 'jpeg', quality: 0.98 },
-            html2canvas:   { scale: 2, letterRendering: true },
-            jsPDF:         { unit: 'in', format: 'a4', orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(element).save();
-    });
-}
-
 // ============================================================
 //  ini
 // ============================================================
@@ -1111,28 +1125,50 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script>
+<script>
 function setupPdf() {
     const btn = document.getElementById('download-pdf-btn');
-    if (!btn) return;
+    if (!btn) {
+        console.warn('PDF кнопка не найдена');
+        return;
+    }
 
-    btn.addEventListener('click', () => {
-        const element = document.getElementById('page-content');
-        if (!element) {
-            alert('Не вдалося знайти вміст сторінки.');
+    btn.addEventListener('click', function() {
+        if (typeof html2pdf === 'undefined') {
+            alert('Бібліотека PDF ще не завантажена. Спробуйте оновити сторінку або використайте друк браузера (Ctrl+P).');
             return;
         }
 
-        // Показуємо індикатор завантаження
+        const element = document.getElementById('pdf-content');
+        if (!element) {
+            alert('Не вдалося знайти вміст для PDF.');
+            return;
+        }
+
         const originalText = btn.textContent;
         btn.textContent = '⏳ Генерація PDF...';
         btn.disabled = true;
+
+        // Ховаємо чат-бот на час генерації
+        const chatWindow = document.getElementById('chat-window');
+        const chatToggle = document.getElementById('chat-toggle');
+        if (chatWindow) chatWindow.style.display = 'none';
+        if (chatToggle) chatToggle.style.display = 'none';
 
         const opt = {
             margin:        [0.5, 0.5, 0.5, 0.5],
             filename:      'Yevheniia_Babenko_Academic_Profile.pdf',
             image:         { type: 'jpeg', quality: 0.98 },
-            html2canvas:   { scale: 2, letterRendering: true, useCORS: true },
+            html2canvas:   { 
+                scale: 2, 
+                letterRendering: true, 
+                useCORS: true,
+                ignoreElements: function(el) {
+                    return el.id === 'chat-window' || 
+                           el.id === 'chat-toggle' ||
+                           el.classList.contains('hidden');
+                }
+            },
             jsPDF:         { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
 
@@ -1141,20 +1177,27 @@ function setupPdf() {
             .from(element)
             .save()
             .then(() => {
+                if (chatWindow) chatWindow.style.display = '';
+                if (chatToggle) chatToggle.style.display = '';
                 btn.textContent = originalText;
                 btn.disabled = false;
             })
             .catch((err) => {
                 console.error('Помилка генерації PDF:', err);
                 alert('Не вдалося зберегти PDF. Спробуйте використати друк браузера (Ctrl+P → "Зберегти як PDF").');
+                if (chatWindow) chatWindow.style.display = '';
+                if (chatToggle) chatToggle.style.display = '';
                 btn.textContent = originalText;
                 btn.disabled = false;
             });
     });
 }
 
-// Викликаємо функцію після завантаження сторінки
-document.addEventListener('DOMContentLoaded', setupPdf);
+// Ініціалізація після завантаження сторінки
+document.addEventListener('DOMContentLoaded', function() {
+    setupPdf();
+    console.log('✅ PDF функцію завантажено');
+});
 </script>
 </body>
 </html>
