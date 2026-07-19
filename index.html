@@ -1110,6 +1110,52 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ donn');
 });
 </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+function setupPdf() {
+    const btn = document.getElementById('download-pdf-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+        const element = document.getElementById('page-content');
+        if (!element) {
+            alert('Не вдалося знайти вміст сторінки.');
+            return;
+        }
+
+        // Показуємо індикатор завантаження
+        const originalText = btn.textContent;
+        btn.textContent = '⏳ Генерація PDF...';
+        btn.disabled = true;
+
+        const opt = {
+            margin:        [0.5, 0.5, 0.5, 0.5],
+            filename:      'Yevheniia_Babenko_Academic_Profile.pdf',
+            image:         { type: 'jpeg', quality: 0.98 },
+            html2canvas:   { scale: 2, letterRendering: true, useCORS: true },
+            jsPDF:         { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf()
+            .set(opt)
+            .from(element)
+            .save()
+            .then(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            })
+            .catch((err) => {
+                console.error('Помилка генерації PDF:', err);
+                alert('Не вдалося зберегти PDF. Спробуйте використати друк браузера (Ctrl+P → "Зберегти як PDF").');
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
+    });
+}
+
+// Викликаємо функцію після завантаження сторінки
+document.addEventListener('DOMContentLoaded', setupPdf);
+</script>
 </body>
 </html>
 
