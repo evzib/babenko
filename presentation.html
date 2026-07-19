@@ -5,84 +5,316 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trends and Innovations in Modern Agriculture</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --bg: #ffffff; --bg-muted: #f8f8f8; --bg-raised: #f0f0f0;
-    --border: #e0e0e0; --text-primary: #111111; --text-secondary: #444444;
-    --text-tertiary: #777777; --text-quaternary: #aaaaaa;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --ease: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  html, body {
-    font-family: var(--font-sans); background: var(--bg); color: var(--text-primary);
-    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px;
-  }
-  .pres-wrapper { width: 100%; max-width: 900px; border: 1px solid var(--border); overflow: hidden; background: var(--bg); }
-  .pres-header { padding: 20px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .pres-header .meta { font-size: 10px; color: var(--text-quaternary); letter-spacing: 1.5px; text-transform: uppercase; }
-  .pres-header .title { font-size: 15px; font-weight: 500; margin-top: 4px; }
-  .pres-header .counter { font-size: 12px; color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
-  .viewport { position: relative; height: 480px; overflow: hidden; }
-  .track { display: flex; transition: transform 0.5s var(--ease); height: 100%; }
-  .slide { min-width: 100%; padding: 40px 48px; display: flex; flex-direction: column; overflow-y: auto; }
-  .slide h1 { font-size: 32px; font-weight: 500; line-height: 1.2; margin: 0 0 16px 0; letter-spacing: -0.5px; }
-  .slide h2 { font-size: 20px; font-weight: 500; margin: 0 0 20px 0; letter-spacing: -0.3px; }
-  .slide p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin: 0 0 24px 0; }
-  .badge { padding: 6px 14px; font-size: 12px; color: var(--text-secondary); border: 1px solid var(--border); display: inline-block; }
-  .badge b { color: var(--text-primary); font-weight: 600; }
-  .flow-step { display: flex; align-items: center; gap: 16px; }
-  .flow-circle { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; }
-  .flow-circle.hl { background: var(--text-primary); color: var(--bg); }
-  .flow-circle.hl2 { background: var(--text-secondary); color: var(--bg); }
-  .flow-line { width: 1px; height: 20px; background: var(--border); margin-left: 21px; }
-  .layer-row { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; }
-  .layer-row:hover { background: var(--bg-muted); }
-  .layer-num { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0; }
-  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .card { padding: 14px 16px; border: 1px solid var(--border); }
-  .card-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
-  .card-desc { font-size: 12px; color: var(--text-tertiary); line-height: 1.6; }
-  .cv-item { display: flex; gap: 12px; padding: 12px 16px; border: 1px solid var(--border); align-items: flex-start; }
-  .cv-tag { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-muted); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; flex-shrink: 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th, td { padding: 8px 6px; text-align: left; border-bottom: 1px solid var(--border); }
-  th { color: var(--text-secondary); font-weight: 500; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; }
-  td { color: var(--text-secondary); }
-  td b { color: var(--text-primary); font-weight: 500; }
-  .timeline-row { display: flex; align-items: center; gap: 16px; }
-  .timeline-label { width: 60px; font-size: 11px; color: var(--text-quaternary); text-align: right; flex-shrink: 0; font-weight: 500; }
-  .timeline-bar { flex: 1; height: 32px; display: flex; align-items: center; padding: 0 12px; font-size: 12px; color: var(--text-secondary); border: 1px solid var(--border); background: var(--bg-muted); }
-  .finding { padding: 12px 16px; border-left: 2px solid var(--text-primary); background: var(--bg-muted); }
-  .conclusion-row { display: flex; gap: 14px; align-items: flex-start; }
-  .conclusion-num { width: 22px; height: 22px; border-radius: 50%; background: var(--text-primary); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; flex-shrink: 0; margin-top: 1px; }
-  .controls { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .btn { width: 36px; height: 36px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; }
-  .btn:hover { background: var(--bg-muted); }
-  .btn-group { display: flex; gap: 6px; }
-  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.2s; display: inline-block; }
-  .dot.active { background: var(--text-primary); width: 18px; border-radius: 3px; }
-  @media (max-width: 640px) {
-    .slide { padding: 24px 20px; }
-    .slide h1 { font-size: 24px; }
-    .slide h2 { font-size: 17px; }
-    .viewport { height: 420px; }
-    .card-grid { grid-template-columns: 1fr; }
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html {
+  font-size: 16px;
+  transition: font-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+:root {
+  --bg: #ffffff;
+  --bg-muted: #f8f8f8;
+  --bg-raised: #f0f0f0;
+  --border: #e0e0e0;
+  --text-primary: #111111;
+  --text-secondary: #444444;
+  --text-tertiary: #777777;
+  --text-quaternary: #aaaaaa;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+html, body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.pres-wrapper {
+  width: 100%;
+  max-width: 900px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--bg);
+}
+.pres-header {
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pres-header .meta {
+  font-size: 0.625rem;
+  color: var(--text-quaternary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.pres-header .title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+.pres-header .counter {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+.viewport {
+  position: relative;
+  height: 30rem;
+  overflow: hidden;
+}
+.track {
+  display: flex;
+  transition: transform 0.5s var(--ease);
+  height: 100%;
+}
+.slide {
+  min-width: 100%;
+  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.slide h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.5px;
+}
+.slide h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.3px;
+}
+.slide p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 1.5rem 0;
+}
+.badge {
+  padding: 0.375rem 0.875rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: inline-block;
+  border: 1px solid var(--border);
+}
+.badge b { color: var(--text-primary); font-weight: 600; }
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.flow-circle {
+  width: 2.75rem; height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.flow-circle.hl { background: var(--text-primary); color: var(--bg); }
+.flow-circle.hl2 { background: var(--text-secondary); color: var(--bg); }
+.flow-line {
+  width: 1px; height: 1.25rem;
+  background: var(--border);
+  margin-left: 1.3125rem;
+}
+.layer-row {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.layer-row:hover { background: var(--bg-muted); }
+.layer-num {
+  width: 1.75rem; height: 1.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+.card {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border);
+}
+.card-title {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+.card-desc {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+}
+.cv-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  align-items: flex-start;
+}
+.cv-tag {
+  width: 2rem; height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+th, td {
+  padding: 0.5rem 0.375rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+td { color: var(--text-secondary); }
+td b { color: var(--text-primary); font-weight: 500; }
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.timeline-label {
+  width: 3.75rem;
+  font-size: 0.6875rem;
+  color: var(--text-quaternary);
+  text-align: right;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+.timeline-bar {
+  flex: 1;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  background: var(--bg-muted);
+}
+.finding {
+  padding: 0.75rem 1rem;
+  border-left: 2px solid var(--text-primary);
+  background: var(--bg-muted);
+}
+.conclusion-row {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+}
+.conclusion-num {
+  width: 1.375rem; height: 1.375rem;
+  border-radius: 50%;
+  background: var(--text-primary);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-top: 0.0625rem;
+}
+.controls {
+  padding: 0.875rem 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn {
+  width: 2.25rem; height: 2.25rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+.btn:hover { background: var(--bg-muted); }
+.btn-group { display: flex; gap: 0.375rem; align-items: center; }
+.dot {
+  width: 0.375rem; height: 0.375rem;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.dot.active { background: var(--text-primary); width: 1.125rem; border-radius: 3px; }
+.zoom-level {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  min-width: 2.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .slide { padding: 1.5rem 1.25rem; }
+  .slide h1 { font-size: 1.5rem; }
+  .slide h2 { font-size: 1.0625rem; }
+  .viewport { height: 26rem; }
+  .card-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 <div class="pres-wrapper">
   <div class="pres-header">
-    <div><div class="meta">Systematic Review · 2026</div><div class="title">Trends and Innovations in Modern Agriculture</div></div>
+    <div>
+      <div class="meta">Systematic Review · 2026</div>
+      <div class="title">Trends and Innovations in Modern Agriculture</div>
+    </div>
     <div class="counter" id="slide-counter">1 / 10</div>
   </div>
   <div class="viewport" id="slide-viewport">
     <div class="track" id="slides-track">
       <div class="slide" style="justify-content: center;">
-        <div style="font-size: 10px; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">Babenko Y. · Academia Engineering 2026</div>
+        <div style="font-size: 0.625rem; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">Babenko Y. · Academia Engineering 2026</div>
         <h1>Trends and Innovations<br>in Modern Agriculture</h1>
         <p>From fluorescent sensors to decision support systems — a systematic review of 65 studies mapping the Plant-IT architecture.</p>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
           <span class="badge"><b>65</b> studies reviewed</span>
           <span class="badge"><b>5</b> query streams</span>
           <span class="badge"><b>5</b> Plant-IT layers</span>
@@ -90,26 +322,80 @@
       </div>
       <div class="slide">
         <h2>PRISMA Screening Workflow</h2>
-        <div style="display: flex; flex-direction: column; gap: 4px; flex: 1; justify-content: center;">
-          <div class="flow-step"><div class="flow-circle">19,217</div><div><div style="font-size: 14px; font-weight: 500;">Records Identified</div><div style="font-size: 12px; color: var(--text-tertiary);">5 queries (Q1–Q5) in Scopus</div></div></div>
+        <div style="display: flex; flex-direction: column; gap: 0.25rem; flex: 1; justify-content: center;">
+          <div class="flow-step">
+            <div class="flow-circle">19,217</div>
+            <div>
+              <div style="font-size: 0.875rem; font-weight: 500;">Records Identified</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">5 queries (Q1–Q5) in Scopus</div>
+            </div>
+          </div>
           <div class="flow-line"></div>
-          <div class="flow-step"><div class="flow-circle">15,163</div><div><div style="font-size: 14px; font-weight: 500;">After Scopus Filters</div><div style="font-size: 12px; color: var(--text-tertiary);">AGRI, ENGI, COMP · Articles, Reviews · English</div></div></div>
+          <div class="flow-step">
+            <div class="flow-circle">15,163</div>
+            <div>
+              <div style="font-size: 0.875rem; font-weight: 500;">After Scopus Filters</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">AGRI, ENGI, COMP · Articles, Reviews · English</div>
+            </div>
+          </div>
           <div class="flow-line"></div>
-          <div class="flow-step"><div class="flow-circle hl">70</div><div><div style="font-size: 14px; font-weight: 500;">Eligible (before dedup)</div><div style="font-size: 12px; color: var(--text-tertiary);">Domain-expert full-text screening</div></div></div>
+          <div class="flow-step">
+            <div class="flow-circle hl">70</div>
+            <div>
+              <div style="font-size: 0.875rem; font-weight: 500;">Eligible (before dedup)</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">Domain-expert full-text screening</div>
+            </div>
+          </div>
           <div class="flow-line"></div>
-          <div class="flow-step"><div class="flow-circle hl2">65</div><div><div style="font-size: 14px; font-weight: 500;">Final Corpus</div><div style="font-size: 12px; color: var(--text-tertiary);">5 duplicates removed · mapped to Plant-IT layers</div></div></div>
+          <div class="flow-step">
+            <div class="flow-circle hl2">65</div>
+            <div>
+              <div style="font-size: 0.875rem; font-weight: 500;">Final Corpus</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">5 duplicates removed · mapped to Plant-IT layers</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="slide">
         <h2>Plant-IT 5-Layer Architecture</h2>
-        <div style="display: flex; flex-direction: column; gap: 6px; flex: 1; justify-content: center;">
-          <div class="layer-row" onclick="goTo(6)"><div class="layer-num">5</div><div style="flex: 1;"><div style="font-size: 14px; font-weight: 500;">DSS Layer</div><div style="font-size: 12px; color: var(--text-tertiary);">Decision support & prescriptions · 8 studies (12.3%)</div></div></div>
-          <div class="layer-row" onclick="goTo(6)"><div class="layer-num">4</div><div style="flex: 1;"><div style="font-size: 14px; font-weight: 500;">IoT Integration Layer</div><div style="font-size: 12px; color: var(--text-tertiary);">Data transmission & edge-cloud · 6 studies (9.2%)</div></div></div>
-          <div class="layer-row" onclick="goTo(4)"><div class="layer-num">3</div><div style="flex: 1;"><div style="font-size: 14px; font-weight: 500;">Machine Learning Layer</div><div style="font-size: 12px; color: var(--text-tertiary);">Pattern recognition & prediction · 12 studies (18.5%)</div></div></div>
-          <div class="layer-row" onclick="goTo(4)"><div class="layer-num">2</div><div style="flex: 1;"><div style="font-size: 14px; font-weight: 500;">Computer Vision Layer</div><div style="font-size: 12px; color: var(--text-tertiary);">Image-based phenotyping & disease detection · 17 studies (26.2%)</div></div></div>
-          <div class="layer-row" onclick="goTo(3)"><div class="layer-num">1</div><div style="flex: 1;"><div style="font-size: 14px; font-weight: 500;">Sensor & Plant Layer</div><div style="font-size: 12px; color: var(--text-tertiary);">In situ & remote sensing · 22 studies (33.8%)</div></div></div>
+        <div style="display: flex; flex-direction: column; gap: 0.375rem; flex: 1; justify-content: center;">
+          <div class="layer-row" onclick="goTo(6)">
+            <div class="layer-num">5</div>
+            <div style="flex: 1;">
+              <div style="font-size: 0.875rem; font-weight: 500;">DSS Layer</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">Decision support & prescriptions · 8 studies (12.3%)</div>
+            </div>
+          </div>
+          <div class="layer-row" onclick="goTo(6)">
+            <div class="layer-num">4</div>
+            <div style="flex: 1;">
+              <div style="font-size: 0.875rem; font-weight: 500;">IoT Integration Layer</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">Data transmission & edge-cloud · 6 studies (9.2%)</div>
+            </div>
+          </div>
+          <div class="layer-row" onclick="goTo(4)">
+            <div class="layer-num">3</div>
+            <div style="flex: 1;">
+              <div style="font-size: 0.875rem; font-weight: 500;">Machine Learning Layer</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">Pattern recognition & prediction · 12 studies (18.5%)</div>
+            </div>
+          </div>
+          <div class="layer-row" onclick="goTo(4)">
+            <div class="layer-num">2</div>
+            <div style="flex: 1;">
+              <div style="font-size: 0.875rem; font-weight: 500;">Computer Vision Layer</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">Image-based phenotyping & disease detection · 17 studies (26.2%)</div>
+            </div>
+          </div>
+          <div class="layer-row" onclick="goTo(3)">
+            <div class="layer-num">1</div>
+            <div style="flex: 1;">
+              <div style="font-size: 0.875rem; font-weight: 500;">Sensor & Plant Layer</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">In situ & remote sensing · 22 studies (33.8%)</div>
+            </div>
+          </div>
         </div>
-        <div style="font-size: 11px; color: var(--text-quaternary); margin-top: 10px; text-align: center;">Click a layer to jump to its details →</div>
+        <div style="font-size: 0.6875rem; color: var(--text-quaternary); margin-top: 0.625rem; text-align: center;">Click a layer to jump to its details →</div>
       </div>
       <div class="slide">
         <h2>Sensor & Plant Layer (22 studies)</h2>
@@ -126,12 +412,42 @@
       </div>
       <div class="slide">
         <h2>Computer Vision Layer (17 studies)</h2>
-        <div style="flex: 1; display: flex; flex-direction: column; gap: 8px; overflow-y: auto;">
-          <div class="cv-item"><div class="cv-tag">CNN</div><div><div style="font-size: 13px; font-weight: 500;">PlantVillage CNN</div><div style="font-size: 12px; color: var(--text-tertiary);">38 disease classes · leaf-level classification</div></div></div>
-          <div class="cv-item"><div class="cv-tag">YOLO</div><div><div style="font-size: 13px; font-weight: 500;">YOLOv5/v8/v11</div><div style="font-size: 12px; color: var(--text-tertiary);">Real-time multi-class plant health monitoring · spot-level detection</div></div></div>
-          <div class="cv-item"><div class="cv-tag">ViT</div><div><div style="font-size: 13px; font-weight: 500;">Vision Transformers</div><div style="font-size: 12px; color: var(--text-tertiary);">Complex/noisy backgrounds · global contextual info</div></div></div>
-          <div class="cv-item"><div class="cv-tag">GAN</div><div><div style="font-size: 13px; font-weight: 500;">GAN Augmentation</div><div style="font-size: 12px; color: var(--text-tertiary);">Synthetic data for rare diseases · improves generalization</div></div></div>
-          <div class="cv-item"><div class="cv-tag">UAV</div><div><div style="font-size: 13px; font-weight: 500;">UAV + Multi-modal Fusion</div><div style="font-size: 12px; color: var(--text-tertiary);">RGB + thermal + hyperspectral · large-scale spatial coverage</div></div></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 0.5rem; overflow-y: auto;">
+          <div class="cv-item">
+            <div class="cv-tag">CNN</div>
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 500;">PlantVillage CNN</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">38 disease classes · leaf-level classification</div>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-tag">YOLO</div>
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 500;">YOLOv5/v8/v11</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">Real-time multi-class plant health monitoring · spot-level detection</div>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-tag">ViT</div>
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 500;">Vision Transformers</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">Complex/noisy backgrounds · global contextual info</div>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-tag">GAN</div>
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 500;">GAN Augmentation</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">Synthetic data for rare diseases · improves generalization</div>
+            </div>
+          </div>
+          <div class="cv-item">
+            <div class="cv-tag">UAV</div>
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 500;">UAV + Multi-modal Fusion</div>
+              <div style="font-size: 0.75rem; color: var(--text-tertiary);">RGB + thermal + hyperspectral · large-scale spatial coverage</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="slide">
@@ -153,15 +469,51 @@
       <div class="slide">
         <h2>IoT Integration & Decision Support</h2>
         <div class="card-grid" style="flex: 1;">
-          <div class="card"><div class="card-title">IoT Architecture</div><div class="card-desc">Sensor nodes (CFI, spectral, thermal, soil)<br>LoRaWAN / Zigbee / NB-IoT<br>Edge + cloud computing<br>Dashboards & mobile apps<br>Blockchain for data integrity</div></div>
-          <div class="card"><div class="card-title">Digital Twins</div><div class="card-desc">Virtual plant models<br>Real-time sensor updates<br>Predict crop responses<br>Test interventions virtually<br>Scalable: plot → commercial farm</div></div>
-          <div class="card"><div class="card-title">Bio-Inspired DSS</div><div class="card-desc">Swarm intelligence (ant colony)<br>Neuro-symbolic hybrids<br>Fuzzy logic (bee foraging)<br>Plant signal propagation<br>Adaptive, noise-tolerant</div></div>
-          <div class="card"><div class="card-title">Key Bottlenecks</div><div class="card-desc">Data heterogeneity & standards<br>Device interoperability<br>Energy constraints<br>Cybersecurity risks<br>Limited closed-loop control</div></div>
+          <div class="card">
+            <div class="card-title">IoT Architecture</div>
+            <div class="card-desc">
+              Sensor nodes (CFI, spectral, thermal, soil)<br>
+              LoRaWAN / Zigbee / NB-IoT<br>
+              Edge + cloud computing<br>
+              Dashboards & mobile apps<br>
+              Blockchain for data integrity
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Digital Twins</div>
+            <div class="card-desc">
+              Virtual plant models<br>
+              Real-time sensor updates<br>
+              Predict crop responses<br>
+              Test interventions virtually<br>
+              Scalable: plot → commercial farm
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Bio-Inspired DSS</div>
+            <div class="card-desc">
+              Swarm intelligence (ant colony)<br>
+              Neuro-symbolic hybrids<br>
+              Fuzzy logic (bee foraging)<br>
+              Plant signal propagation<br>
+              Adaptive, noise-tolerant
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Key Bottlenecks</div>
+            <div class="card-desc">
+              Data heterogeneity & standards<br>
+              Device interoperability<br>
+              Energy constraints<br>
+              Cybersecurity risks<br>
+              Limited closed-loop control
+            </div>
+          </div>
         </div>
       </div>
       <div class="slide">
         <h2>Temporal Evolution of Plant-IT</h2>
-        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px;">
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.625rem;">
           <div class="timeline-row"><div class="timeline-label">1990s</div><div class="timeline-bar">Sensor & physiology research emerges (Q1)</div></div>
           <div class="timeline-row"><div class="timeline-label">2002+</div><div class="timeline-bar">DSS-oriented research begins (Q3)</div></div>
           <div class="timeline-row"><div class="timeline-label">2021–22</div><div class="timeline-bar">Remote sensing inflection — UAVs & satellites (Q4)</div></div>
@@ -169,29 +521,59 @@
           <div class="timeline-row"><div class="timeline-label">2025</div><div class="timeline-bar">Precision agriculture explodes — 1566 pubs (Q2)</div></div>
           <div class="timeline-row"><div class="timeline-label">Steady</div><div class="timeline-bar">Computer vision — gradual maturation, 10–20 pubs/yr (Q5)</div></div>
         </div>
-        <div style="font-size: 11px; color: var(--text-quaternary); margin-top: 12px; text-align: center;">Bottom-up evolution: sensing → perception → learning → decision</div>
+        <div style="font-size: 0.6875rem; color: var(--text-quaternary); margin-top: 0.75rem; text-align: center;">Bottom-up evolution: sensing → perception → learning → decision</div>
       </div>
       <div class="slide">
         <h2>Key Findings & Gaps</h2>
-        <div style="flex: 1; display: flex; flex-direction: column; gap: 8px; overflow-y: auto;">
-          <div class="finding"><div style="font-size: 13px; font-weight: 500;">Fragmentation</div><div style="font-size: 12px; color: var(--text-tertiary); margin-top: 3px;">Most studies address isolated components — rarely integrated end-to-end</div></div>
-          <div class="finding"><div style="font-size: 13px; font-weight: 500;">Standardization Gap</div><div style="font-size: 12px; color: var(--text-tertiary); margin-top: 3px;">No unified data formats, ontologies, or metadata — limits transferability</div></div>
-          <div class="finding"><div style="font-size: 13px; font-weight: 500;">Field Robustness</div><div style="font-size: 12px; color: var(--text-tertiary); margin-top: 3px;">CV models struggle with illumination, background, domain shift</div></div>
-          <div class="finding"><div style="font-size: 13px; font-weight: 500;">Closed-Loop Rarity</div><div style="font-size: 12px; color: var(--text-tertiary); margin-top: 3px;">AI mostly for classification — automatic irrigation/nutrient dosing uncommon</div></div>
-          <div class="finding"><div style="font-size: 13px; font-weight: 500;">Knowledge Divide</div><div style="font-size: 12px; color: var(--text-tertiary); margin-top: 3px;">Agronomists lack DSS literacy; engineers lack plant physiology — bridge needed</div></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 0.5rem; overflow-y: auto;">
+          <div class="finding">
+            <div style="font-size: 0.8125rem; font-weight: 500;">Fragmentation</div>
+            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.1875rem;">Most studies address isolated components — rarely integrated end-to-end</div>
+          </div>
+          <div class="finding">
+            <div style="font-size: 0.8125rem; font-weight: 500;">Standardization Gap</div>
+            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.1875rem;">No unified data formats, ontologies, or metadata — limits transferability</div>
+          </div>
+          <div class="finding">
+            <div style="font-size: 0.8125rem; font-weight: 500;">Field Robustness</div>
+            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.1875rem;">CV models struggle with illumination, background, domain shift</div>
+          </div>
+          <div class="finding">
+            <div style="font-size: 0.8125rem; font-weight: 500;">Closed-Loop Rarity</div>
+            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.1875rem;">AI mostly for classification — automatic irrigation/nutrient dosing uncommon</div>
+          </div>
+          <div class="finding">
+            <div style="font-size: 0.8125rem; font-weight: 500;">Knowledge Divide</div>
+            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.1875rem;">Agronomists lack DSS literacy; engineers lack plant physiology — bridge needed</div>
+          </div>
         </div>
       </div>
       <div class="slide" style="justify-content: center;">
-        <h2 style="font-size: 22px;">Conclusions & Future Directions</h2>
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div class="conclusion-row"><div class="conclusion-num">1</div><div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">Plant-IT architecture</strong> provides a conceptual framework for integrating sensing → analytics → decision support</div></div>
-          <div class="conclusion-row"><div class="conclusion-num">2</div><div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">Harmonized standards</strong> are critical — semantic frameworks, compatible protocols, FAIR principles</div></div>
-          <div class="conclusion-row"><div class="conclusion-num">3</div><div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">AI-on-the-edge</strong> — energy-efficient preprocessing closer to sensors for real-time responsiveness</div></div>
-          <div class="conclusion-row"><div class="conclusion-num">4</div><div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">Digital twins + bio-solutions</strong> — coupling microbial consortia, biopesticides with real-time monitoring</div></div>
-          <div class="conclusion-row"><div class="conclusion-num">5</div><div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">Adaptive HMIs</strong> — human-centric DSS interfaces that adjust to context, cognitive load, and crop stage</div></div>
+        <h2 style="font-size: 1.375rem;">Conclusions & Future Directions</h2>
+        <div style="display: flex; flex-direction: column; gap: 0.875rem;">
+          <div class="conclusion-row">
+            <div class="conclusion-num">1</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">Plant-IT architecture</strong> provides a conceptual framework for integrating sensing → analytics → decision support</div>
+          </div>
+          <div class="conclusion-row">
+            <div class="conclusion-num">2</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">Harmonized standards</strong> are critical — semantic frameworks, compatible protocols, FAIR principles</div>
+          </div>
+          <div class="conclusion-row">
+            <div class="conclusion-num">3</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">AI-on-the-edge</strong> — energy-efficient preprocessing closer to sensors for real-time responsiveness</div>
+          </div>
+          <div class="conclusion-row">
+            <div class="conclusion-num">4</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">Digital twins + bio-solutions</strong> — coupling microbial consortia, biopesticides with real-time monitoring</div>
+          </div>
+          <div class="conclusion-row">
+            <div class="conclusion-num">5</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--text-primary); font-weight: 500;">Adaptive HMIs</strong> — human-centric DSS interfaces that adjust to context, cognitive load, and crop stage</div>
+          </div>
         </div>
-        <div style="margin-top: 28px; padding: 12px 16px; border: 1px solid var(--border); text-align: center;">
-          <div style="font-size: 11px; color: var(--text-tertiary);">Babenko Y. · Academia Engineering 2026 · DOI: 10.20935/AcadEng8153</div>
+        <div style="margin-top: 1.75rem; padding: 0.75rem 1rem; border: 1px solid var(--border); text-align: center;">
+          <div style="font-size: 0.6875rem; color: var(--text-tertiary);">Babenko Y. · Academia Engineering 2026 · <a href="https://www.academia.edu/2994-7065/3/1/10.20935/AcadEng8153" target="_blank" style="color: #0066cc; text-decoration: none;">DOI: 10.20935/AcadEng8153</a></div>
         </div>
       </div>
     </div>
@@ -215,8 +597,9 @@
       <span class="dot" data-slide="9"></span>
     </div>
     <div class="btn-group">
-      <button class="btn" id="btn-zoom-in">+</button>
+      <span class="zoom-level" id="zoom-display">100%</span>
       <button class="btn" id="btn-zoom-out">−</button>
+      <button class="btn" id="btn-zoom-in">+</button>
     </div>
   </div>
 </div>
@@ -230,38 +613,67 @@
   const btnPlay = document.getElementById('btn-play');
   const btnZoomIn = document.getElementById('btn-zoom-in');
   const btnZoomOut = document.getElementById('btn-zoom-out');
-  const viewport = document.getElementById('slide-viewport');
-  let current = 0, total = 10, playing = false, timer = null, zoom = 1;
+  const zoomDisplay = document.getElementById('zoom-display');
+
+  let current = 0;
+  const total = 10;
+  let playing = false;
+  let timer = null;
+  let zoomLevel = 100;
+  const minZoom = 70;
+  const maxZoom = 150;
+  const step = 10;
+
   window.goTo = function(n) {
     current = Math.max(0, Math.min(total - 1, n));
     track.style.transform = 'translateX(-' + (current * 100) + '%)';
     counter.textContent = (current + 1) + ' / ' + total;
     dots.forEach((d, i) => { d.classList.toggle('active', i === current); });
   };
+
   function next() { goTo(current + 1 >= total ? 0 : current + 1); }
   function prev() { goTo(current - 1 < 0 ? total - 1 : current - 1); }
+
   function togglePlay() {
     playing = !playing;
     btnPlay.textContent = playing ? '⏸' : '▶';
-    if (playing) { timer = setInterval(next, 4000); } else { clearInterval(timer); }
+    if (playing) { timer = setInterval(next, 4000); }
+    else { clearInterval(timer); }
   }
-  function setZoom(z) {
-    zoom = Math.max(0.7, Math.min(1.5, z));
-    viewport.style.transform = 'scale(' + zoom + ')';
-    viewport.style.transformOrigin = 'center center';
+
+  function applyZoom() {
+    document.documentElement.style.fontSize = zoomLevel + '%';
+    zoomDisplay.textContent = zoomLevel + '%';
   }
+
+  function zoomIn() {
+    if (zoomLevel < maxZoom) { zoomLevel += step; applyZoom(); }
+  }
+
+  function zoomOut() {
+    if (zoomLevel > minZoom) { zoomLevel -= step; applyZoom(); }
+  }
+
   btnPrev.addEventListener('click', prev);
   btnNext.addEventListener('click', next);
   btnPlay.addEventListener('click', togglePlay);
-  btnZoomIn.addEventListener('click', () => setZoom(zoom + 0.15));
-  btnZoomOut.addEventListener('click', () => setZoom(zoom - 0.15));
-  dots.forEach(d => { d.addEventListener('click', () => goTo(parseInt(d.dataset.slide))); });
+  btnZoomIn.addEventListener('click', zoomIn);
+  btnZoomOut.addEventListener('click', zoomOut);
+
+  dots.forEach(d => {
+    d.addEventListener('click', () => goTo(parseInt(d.dataset.slide)));
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') next();
     if (e.key === 'ArrowLeft') prev();
     if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+    if (e.key === '+' || e.key === '=') zoomIn();
+    if (e.key === '-') zoomOut();
   });
+
   let startX = 0;
+  const viewport = document.getElementById('slide-viewport');
   viewport.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive: true});
   viewport.addEventListener('touchend', (e) => {
     const diff = startX - e.changedTouches[0].clientX;
