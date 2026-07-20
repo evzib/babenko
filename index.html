@@ -249,6 +249,15 @@
         .pdf-btn:hover {
             background: #1a3f66;
         }
+
+        .pdf-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 2rem 0 0.5rem;
+            text-align: center;
+        }
         @media (max-width: 650px) {
             .container { padding: 1.5rem; }
             .header { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
@@ -403,32 +412,71 @@
         }
         /* ===== Стили  / PDF ===== */
 @media print {
-    #chat-window, #chat-toggle, .lang-switcher {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    #chat-window,
+    #chat-toggle,
+    .lang-switcher,
+    .pdf-actions,
+    .pdf-btn,
+    .pub-filters {
         display: none !important;
     }
+
+    html,
+    body {
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: #ffffff !important;
+    }
+
     body {
         padding: 0 !important;
         margin: 0 !important;
-        background: #fff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
+
     .container {
+        width: 100% !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
         box-shadow: none !important;
-        padding: 20px !important;
-        max-width: 100% !important;
+        border-radius: 0 !important;
+        background: #ffffff !important;
     }
+
     #pdf-content {
-        padding: 20px !important;
-        background: #fff !important;
+        width: 100% !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        background: #ffffff !important;
     }
-    h2 {
+
+    .header {
+        page-break-inside: avoid;
+    }
+
+    h2,
+    h3 {
         page-break-after: avoid;
     }
+
+    li,
+    p {
+        orphans: 3;
+        widows: 3;
+    }
+
     a {
         text-decoration: underline !important;
         color: #0b2a4a !important;
-    }
-    ul, .contrib-list {
-        page-break-inside: avoid;
     }
 }
     </style>
@@ -687,7 +735,6 @@
         <button id="chat-send">Send</button>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 // ============================================================
 //  translation
@@ -725,7 +772,7 @@ const translations = {
         'patent-5': 'Method of determining physiological state of plants (UA 24908, 2007)',
         'patent-6': 'Process of determining drought resistance of plants (UA 20131, 2007)',
         'pubs-title': 'Selected Publications',
-        'pub-1': '<strong>Babenko Y.</strong> Trends and innovations in modern agriculture... <a href="presentation.html" target="_blank" style="display: inline-block; background: var(--accent); color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; text-decoration: none; white-space: nowrap;">📊 Presentation</a>',
+        'pub-1': '<strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems.<em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a><a href="presentation.html" target="_blank" style="display: inline-block; background: var(--accent); color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; text-decoration: none; white-space: nowrap;">📊 Presentation</a>',
         'pub-2': '<strong>Babenko Y., Romanov V.</strong> Cognitive Interaction Layers for Neuro-Symbolic AI. <em>ProfIT AI 2025</em>, Liverpool, UK. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a>',
         'pub-3': '<strong>Babenko Y.</strong> Bioinspired Models for Metaheuristic Optimization. <em>TechRxiv</em>, 2025. <a href="https://doi.org/10.36227/techrXiv.175693302.22402426/v1" target="_blank">DOI</a>',
         'pub-4': '<strong>Babenko Y.</strong> The Path to Artificial General Intelligence Through the Concept of a Digital Organism. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1612.v1" target="_blank">DOI</a>',
@@ -1126,100 +1173,63 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 function setupPdf() {
     const btn = document.getElementById('download-pdf-btn');
+
     if (!btn) {
-        console.warn('PDF кнопка відсутня');
+        console.warn('PDF button was not found.');
         return;
     }
 
-    btn.addEventListener('click', function() {
-        if (typeof html2pdf === 'undefined') {
-            alert('Бібліотека PDF ще не завантажена. Спробуйте оновити сторінку або використайте друк браузера (Ctrl+P).');
-            return;
-        }
+    btn.addEventListener('click', async () => {
+        const originalHtml = btn.innerHTML;
 
-        const element = document.getElementById('pdf-content');
-        if (!element) {
-            alert('Не вдалося знайти вміст для PDF.');
-            return;
-        }
-
-        const originalText = btn.textContent;
-        btn.textContent = '⏳ Генерація PDF...';
         btn.disabled = true;
+        btn.innerHTML = '⏳ Preparing PDF...';
 
-        // Ховаємо чат-бот на час генерації
-        const chatWindow = document.getElementById('chat-window');
-        const chatToggle = document.getElementById('chat-toggle');
-        if (chatWindow) chatWindow.style.display = 'none';
-        if (chatToggle) chatToggle.style.display = 'none';
-
-        // 🔴 keys
-        const currentLang = document.querySelector('.lang-switcher button.active')?.dataset.lang || 'en';        
-        const clone = element.cloneNode(true);        
-        // Применяем переводы к клону
-        clone.querySelectorAll('[data-lang]').forEach(el => {
-            const key = el.getAttribute('data-lang');
-            if (translations[currentLang] && translations[currentLang][key] !== undefined) {
-                el.innerHTML = translations[currentLang][key];
+        try {
+            if (document.fonts && document.fonts.ready) {
+                await document.fonts.ready;
             }
-        });
 
-        //  PDF
-        const langSwitcher = clone.querySelector('.lang-switcher');
-        if (langSwitcher) langSwitcher.remove();
+            const images = Array.from(
+                document.querySelectorAll('#pdf-content img')
+            );
 
-        //  PDF из PDF
-        const pdfBtn = clone.querySelector('#download-pdf-btn');
-        if (pdfBtn) pdfBtn.remove();
+            await Promise.all(
+                images.map((img) => {
+                    if (img.complete) {
+                        return Promise.resolve();
+                    }
 
-        // контейнер для клона
-        const tempContainer = document.createElement('div');
-        tempContainer.style.position = 'absolute';
-        tempContainer.style.left = '-9999px';
-        tempContainer.style.top = '0';
-        tempContainer.style.width = '900px';
-        tempContainer.appendChild(clone);
-        document.body.appendChild(tempContainer);
+                    return new Promise((resolve) => {
+                        const finish = () => resolve();
 
-        const opt = {
-            margin:        [0.5, 0.5, 0.5, 0.5],
-            filename:      'Yevheniia_Babenko_Academic_Profile.pdf',
-            image:         { type: 'jpeg', quality: 0.98 },
-            html2canvas:   { 
-                scale: 2, 
-                letterRendering: true, 
-                useCORS: true,
-                allowTaint: true,
-                width: 900
-            },
-            jsPDF:         { unit: 'in', format: 'a4', orientation: 'portrait' }
-        };
+                        img.addEventListener('load', finish, { once: true });
+                        img.addEventListener('error', finish, { once: true });
 
-        html2pdf()
-            .set(opt)
-            .from(clone)
-            .save()
-            .then(() => {
-                document.body.removeChild(tempContainer);
-                if (chatWindow) chatWindow.style.display = '';
-                if (chatToggle) chatToggle.style.display = '';
-                btn.textContent = originalText;
+                        // Do not block printing if an external image is slow.
+                        setTimeout(finish, 3000);
+                    });
+                })
+            );
+
+            window.print();
+
+        } catch (error) {
+            console.error('Print preparation error:', error);
+            window.print();
+
+        } finally {
+            setTimeout(() => {
                 btn.disabled = false;
-            })
-            .catch((err) => {
-                console.error('Помилка генерації PDF:', err);
-                if (tempContainer.parentNode) document.body.removeChild(tempContainer);
-                if (chatWindow) chatWindow.style.display = '';
-                if (chatToggle) chatToggle.style.display = '';
-                btn.textContent = originalText;
-                btn.disabled = false;
-                alert('Не вдалося зберегти PDF. Спробуйте використати друк браузера (Ctrl+P → "Зберегти як PDF").');
-            });
+                btn.innerHTML = originalHtml;
+            }, 500);
+        }
     });
 }
 </script>
 </body>
 </html>
+
 
 
 
