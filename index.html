@@ -235,19 +235,20 @@
         }
         .pdf-btn {
             display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            padding: 0.6rem 1.8rem;
-            border-radius: 30px;
+            background: #6d7682;
+            color: #ffffff;
+            padding: 0.65rem 1.8rem;
             border: none;
+            border-radius: 30px;
             font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
-            transition: background 0.2s;
-            margin: 1rem 0 0.5rem;
+            transition: all 0.2s ease;
+            margin: 0;
         }
+
         .pdf-btn:hover {
-            background: #1a3f66;
+            background: #59616b;
         }
 
         .pdf-actions {
@@ -257,6 +258,28 @@
             width: 100%;
             margin: 2rem 0 0.5rem;
             text-align: center;
+        }
+
+        .presentation-btn {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 3px 11px;
+            background: var(--light);
+            color: #4f5965;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            line-height: 1.4;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .presentation-btn:hover {
+            background: #e6e8ec;
+            color: var(--accent);
+            border-color: #c5cad2;
         }
         @media (max-width: 650px) {
             .container { padding: 1.5rem; }
@@ -598,10 +621,11 @@
         <button data-filter="sensors">Sensors</button>
     </div>
     <ul class="contrib-list" id="publications-list">
-       <li class="pub-item sensors" data-lang="pub-1" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
-    <span style="flex: 1;"><strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a></span>
-    <a href="presentation.html" target="_blank" style="display: inline-block; background: var(--accent); color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background 0.2s;">📊 Presentation</a>
-</li>
+        <li class="pub-item sensors" data-lang="pub-1">
+            <strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026.
+            <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a>
+            <a href="presentation.html" target="_blank" class="presentation-btn">▶ Presentation</a>
+        </li>
         <li class="pub-item ai" data-lang="pub-2"><strong>Babenko Y., Romanov V.</strong> Cognitive Interaction Layers for Neuro-Symbolic AI. <em>ProfIT AI 2025</em>, Liverpool, UK. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a></li>
         <li class="pub-item ai" data-lang="pub-3"><strong>Babenko Y.</strong> Bioinspired Models for Metaheuristic Optimization. <em>TechRxiv</em>, 2025. <a href="https://doi.org/10.36227/techrXiv.175693302.22402426/v1" target="_blank">DOI</a></li>
         <li class="pub-item ai biology" data-lang="pub-4"><strong>Babenko Y.</strong> The Path to Artificial General Intelligence Through the Concept of a Digital Organism. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1612.v1" target="_blank">DOI</a></li>
@@ -706,10 +730,13 @@
         <li><a href="https://zenodo.org" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">Zenodo – European Research Data Repository</a></li>
     </ul>
 
-    <div style="text-align: center; margin-top: 2rem;">
-       </div>
-        <button class="pdf-btn" id="download-pdf-btn"><i class="fas fa-file-pdf"></i> <span data-lang="pdf-btn">Save page as PDF</span></button>
+    <div class="pdf-actions">
+        <button class="pdf-btn" id="download-pdf-btn">
+            <i class="fas fa-file-pdf"></i>
+            <span data-lang="pdf-btn">Save page as PDF</span>
+        </button>
     </div>
+</div>
 
     <div class="footer">
         <span data-lang="footer">&copy; 2026 Yevheniia Babenko – Built for ERC Advanced Grant</span>
@@ -772,7 +799,7 @@ const translations = {
         'patent-5': 'Method of determining physiological state of plants (UA 24908, 2007)',
         'patent-6': 'Process of determining drought resistance of plants (UA 20131, 2007)',
         'pubs-title': 'Selected Publications',
-        'pub-1': '<strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a> <a href="presentation.html" target="_blank" class="presentation-btn">📊 Presentation</a>',
+        'pub-1': '<strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a> <a href="presentation.html" target="_blank" class="presentation-btn">▶ Presentation</a>',
         'pub-2': '<strong>Babenko Y., Romanov V.</strong> Cognitive Interaction Layers for Neuro-Symbolic AI. <em>ProfIT AI 2025</em>, Liverpool, UK. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a>',
         'pub-3': '<strong>Babenko Y.</strong> Bioinspired Models for Metaheuristic Optimization. <em>TechRxiv</em>, 2025. <a href="https://doi.org/10.36227/techrXiv.175693302.22402426/v1" target="_blank">DOI</a>',
         'pub-4': '<strong>Babenko Y.</strong> The Path to Artificial General Intelligence Through the Concept of a Digital Organism. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1612.v1" target="_blank">DOI</a>',
@@ -840,7 +867,7 @@ const translations = {
         'patent-5': 'Спосіб визначення фізіологічного стану рослин методом індукції флуоресценції хлорофілу (UA 24908, 2007)',
         'patent-6': 'Процес визначення посухостійкості рослин (UA 20131, 2007)',
         'pubs-title': 'Вибрані публікації',
-        'pub-1': '<strong>Babenko Y.</strong> Тенденції та інновації в сучасному сільському господарстві: від флуоресцентних сенсорів до систем підтримки прийняття рішень. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a><a href="presentation.html" target="_blank" style="display: inline-block; background: var(--accent); color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; text-decoration: none; white-space: nowrap;">📊 Presentation</a>',
+        'pub-1': '<strong>Babenko Y.</strong> Тенденції та інновації в сучасному сільському господарстві: від флуоресцентних сенсорів до систем підтримки прийняття рішень. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a> <a href="presentation.html" target="_blank" class="presentation-btn">▶ Презентація</a>',
         'pub-2': '<strong>Babenko Y., Romanov V.</strong> Когнітивні шари взаємодії для нейро-символічного ШІ. <em>ProfIT AI 2025</em>, Ліверпуль, Велика Британія. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a>',
         'pub-3': '<strong>Babenko Y.</strong> Біоінспіровані моделі для метаевристичної оптимізації. <em>TechRxiv</em>, 2025. <a href="https://doi.org/10.36227/techrXiv.175693302.22402426/v1" target="_blank">DOI</a>',
         'pub-4': '<strong>Babenko Y.</strong> Шлях до загального штучного інтелекту через концепцію цифрового організму. <em>Preprints</em>, 2025. <a href="https://doi.org/10.20944/preprints202509.1612.v1" target="_blank">DOI</a>',
@@ -1229,9 +1256,6 @@ function setupPdf() {
 </script>
 </body>
 </html>
-
-
-
 
 
 
