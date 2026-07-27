@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <title>Dr. Yevheniia Babenko · PhD</title>
     <meta name="description" content="Official academic website of Dr. Yevheniia Babenko, Ph.D., Senior Research Fellow at the V.M. Glushkov Institute of Cybernetics. Research in Strong AI, biologically inspired architectures, and digital biology." />
 <link rel="canonical" href="https://evzib.github.io/babenko/" />
@@ -13,14 +14,20 @@
             "@type": "Person",
             "name": "Yevheniia Babenko",
             "jobTitle": "Senior Research Fellow",
+            "identifier": "https://orcid.org/0000-0002-0983-9713",
             "affiliation": {
                 "@type": "Organization",
-                "name": "V.M. Glushkov Institute of Cybernetics"
+                "name": "V.M. Glushkov Institute of Cybernetics",
+                "url": "https://incyb.kiev.ua/en"
             },
             "url": "https://evzib.github.io/babenko/",
             "sameAs": [
                 "https://orcid.org/0000-0002-0983-9713",
-                "https://www.linkedin.com/in/yevheniia-babenko"
+                "https://www.linkedin.com/in/yevheniia-babenko",
+                "https://www.researchgate.net/profile/Yevheniia-Babenko-2",
+                "https://scholar.google.cz/citations?user=WS_MmJAAAAAJ",
+                "https://github.com/evzib",
+                "https://www.amazon.com/stores/Yevheniia-Babenko/author/B0GCN6CCDR"
             ]
         }
     </script>
@@ -80,6 +87,19 @@
             display: block;
         }
         .header-text { flex: 1; }
+
+        .name-line {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .brand-mark {
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
+            display: block;
+        }
         .header-text h1 {
             font-size: 2.6rem;
             font-weight: 600;
@@ -281,12 +301,23 @@
             color: var(--accent);
             border-color: #c5cad2;
         }
+        .book-link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent);
+            font-weight: 500;
+        }
+
+        .book-link:hover {
+            border-bottom-style: solid;
+        }
         @media (max-width: 650px) {
             .container { padding: 1.5rem; }
             .header { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
             .header-text .contact { justify-content: center; }
             .avatar { width: 110px; height: 110px; }
             h1 { font-size: 2rem; }
+            .brand-mark { width: 32px; height: 32px; flex-basis: 32px; }
             .lang-switcher { position: static; margin-bottom: 1rem; }
         }
         @media (max-width: 450px) {
@@ -433,7 +464,7 @@
                 font-size: 22px;
             }
         }
-        /* ===== Стили  / PDF ===== */
+        /* ===== Стилі  / PDF ===== */
 @media print {
     @page {
         size: A4;
@@ -513,14 +544,18 @@
             <img src="your-photo.jpg" alt="Yevheniia Babenko" />
         </div>
         <div class="header-text">
-            <h1 data-lang="name">Yevheniia Babenko</h1>
-            <div class="title" data-lang="title">Ph.D. · Senior Research Fellow · Cybernetics &amp; Biology</div>
+            <div class="name-line">
+                <img class="brand-mark" src="brand-logo.svg" alt="Science Comics logo" />
+                <h1 data-lang="name">Yevheniia Babenko</h1>
+            </div>
+            <div class="title" data-lang="title">Ph.D. · Senior Research Fellow · Biology &amp; Cybernetics</div>
             <div class="contact">
-                <span><i class="fas fa-envelope"></i> <a href="mailto:sarahan@nas.gov.ua">sarahan@nas.gov.ua</a></span>
-                <span><i class="fas fa-envelope"></i> <a href="mailto:evb@post.cz">evb@post.cz</a></span>
-                <span><i class="fab fa-orcid"></i> <a href="https://orcid.org/0000-0002-0983-9713" target="_blank">ORCID</a></span>
-                <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/yevheniia-babenko" target="_blank">LinkedIn</a></span>
-                <span><i class="fas fa-map-marker-alt"></i> <span data-lang="location">Czech Republic</span></span>
+                <span><i class="fas fa-building-columns"></i> <a href="https://incyb.kiev.ua/en" target="_blank" rel="noopener" data-lang="institute-link">V.M. Glushkov Institute of Cybernetics</a></span>
+<span><i class="fab fa-orcid"></i> <a href="https://orcid.org/0000-0002-0983-9713" target="_blank" rel="noopener">ORCID</a></span>
+                <span><i class="fas fa-graduation-cap"></i> <a href="https://scholar.google.cz/citations?user=WS_MmJAAAAAJ" target="_blank" rel="noopener">Google Scholar</a></span>
+                <span><i class="fab fa-researchgate"></i> <a href="https://www.researchgate.net/profile/Yevheniia-Babenko-2" target="_blank" rel="noopener">ResearchGate</a></span>
+                <span><i class="fab fa-github"></i> <a href="https://github.com/evzib" target="_blank" rel="noopener">GitHub</a></span>
+                <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/yevheniia-babenko" target="_blank" rel="noopener">LinkedIn</a></span>
             </div>
         </div>
         <div class="lang-switcher">
@@ -529,31 +564,13 @@
         </div>
     </div>
 
-    <h2 data-lang="vision-title">Research Vision</h2>
+    <h2 data-lang="vision-title">Research Programme</h2>
     <p data-lang="vision-text">
         My research programme aims to establish <strong>Strong AI through biologically inspired architectures</strong> and to enable <strong>controlled, predictable biology via digital infrastructures</strong>. I envision a closed‑loop paradigm where distributed biosensor networks feed real‑time data into neuro‑symbolic AI systems, which in turn model and control biological processes — from plant stress responses to animal behaviour. I propose to create a <strong>distributed sensor‑based digital infrastructure for biological system modelling</strong>, integrating relational representations, Cognitive Interaction Layers for Neuro‑Symbolic AI, and the concept of a digital organism, to transform biology from a descriptive science into an engineering discipline.
     </p>
     <p data-lang="vision-pioneering">
         My vision was ahead of its time. When I first proposed the integration of biosensors into wireless networks and control via expert systems in the late 2000s, these ideas were met with skepticism. Today, these concepts are recognized as essential for precision agriculture, environmental monitoring, and digital biology. My early work on portable fluorimetry (2006–2008) and distributed sensor networks (2013–2016) laid the foundation for a research direction that has been developing at the V.M. Glushkov Institute of Cybernetics for almost two decades. The global network for automatic knowledge taking (UA 89025, 2014) was the first step toward what I now develop as cognitive AI architectures. This continuity of thought reflects my long-term commitment to building intelligent systems that truly understand and model complex biological and cognitive processes.
     </p>
-
-    <h2 data-lang="contrib-title">Key Scientific Contributions</h2>
-    <ul class="contrib-list">
-        <li data-lang="contrib-1"></li>
-        <li data-lang="contrib-2"><strong>Patent UA 86679</strong> – method for plant species identification using spectral data & machine learning</li>
-        <li data-lang="contrib-3"><strong>STCU Project #5219</strong> (PI) – wireless intelligent biosensors for precision agriculture</li>
-        <li data-lang="contrib-4"><strong>STCU Project #6064</strong> (PI) – distributed smart sensor network for environmental monitoring</li>
-        <li data-lang="contrib-5"><strong>Methodological Framework</strong> for information system design in crop production <span class="tag">2022</span></li>
-        <li data-lang="contrib-6"><strong>AI in behavioural studies</strong> – AI‑driven analysis of rodent addiction models <span class="tag">ProfIT AI 2024</span></li>
-        <li data-lang="contrib-7"><strong>Synthesis of AI & sensors</strong> in behavioural research <span class="tag">IJ ITA 2025</span></li>
-        <li data-lang="contrib-8"><strong>Cognitive Interaction Layers</strong> – novel neuro‑symbolic AI framework <span class="tag">2025</span>
-            <span style="font-size: 0.85rem; margin-left: 0.5rem;">
-                <a href="https://nlperspectives.di.unito.it/workshops/w2026/programme/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">🔗 Workshop Programme</a>
-            </span>
-        </li>
-        <li data-lang="contrib-9"><strong>Digital Organism</strong> – a unifying model for AGI <span class="tag">Preprints 2025</span></li>
-        <li data-lang="contrib-10"><strong>Abstract Biology</strong> – relational framework for controlled biology <span class="tag">Preprints 2025</span></li>
-    </ul>
 
     <h2 data-lang="awards-title">Awards &amp; Honours</h2>
     <ul>
@@ -573,7 +590,7 @@
         </li>
     </ul>
 
-    <h2 data-lang="patents-title">Patents (6)</h2>
+    <h2 data-lang="patents-title">Patents</h2>
     <ul>
         <li>
             <span data-lang="patent-1">Global network for automatic knowledge taking (UA 89025, 2014)</span>
@@ -612,6 +629,24 @@
             </span>
         </li>
     </ul>
+
+
+    <h2 data-lang="books-title">Books</h2>
+
+<h3 data-lang="book-prisma-title">PRISMA Comic Guide</h3>
+
+<p data-lang="book-prisma-description">
+    A visual introduction to the PRISMA framework for systematic reviews and evidence synthesis.
+</p>
+
+<p>
+    <a href="https://www.amazon.com/stores/Yevheniia-Babenko/author/B0GCN6CCDR"
+       target="_blank"
+       class="book-link"
+       data-lang="books-link">
+        Explore all books →
+    </a>
+</p>
 
     <h2 data-lang="pubs-title">Selected Publications</h2>
     <div class="pub-filters">
@@ -706,7 +741,17 @@
             <span data-lang="download-cv">Download full CV (ERC format)</span>
         </a>
     </p>
-    <p style="font-size: 0.95rem; color: #555;">
+    
+    <p style="margin-bottom:0.4rem;">
+        <i class="fas fa-envelope" style="color: var(--accent);"></i>
+        <a href="mailto:sarahan@nas.gov.ua" style="color: var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);">sarahan@nas.gov.ua</a>
+    </p>
+    <p style="margin-bottom:0.8rem;">
+        <i class="fas fa-envelope" style="color: var(--accent);"></i>
+        <a href="mailto:evb@post.cz" style="color: var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);">evb@post.cz</a>
+    </p>
+
+<p style="font-size: 0.95rem; color: #555;">
         <i class="fas fa-phone-alt" style="color: var(--accent);"></i> <span data-lang="phone">+420 ... (upon request)</span>
     </p>
     <p style="font-size: 0.95rem; margin-top: 0.5rem;">
@@ -769,35 +814,28 @@
 const translations = {
     en: {
         name: 'Yevheniia Babenko',
-        title: 'Ph.D. · Senior Research Fellow · Cybernetics & Biology',
-        location: 'Czech Republic',
-        'vision-title': 'Research Vision',
+        title: 'Ph.D. · Senior Research Fellow · Biology & Cybernetics',
+        'institute-link': 'V.M. Glushkov Institute of Cybernetics',
+        'vision-title': 'Research Programme',
         'vision-text': 'My research programme aims to establish <strong>Strong AI through biologically inspired architectures</strong> and to enable <strong>controlled, predictable biology via digital infrastructures</strong>. I envision a closed‑loop paradigm where distributed biosensor networks feed real‑time data into neuro‑symbolic AI systems, which in turn model and control biological processes — from plant stress responses to animal behaviour. I propose to create a <strong>distributed sensor‑based digital infrastructure for biological system modelling</strong>, integrating relational representations, Cognitive Interaction Layers for Neuro‑Symbolic AI, and the concept of a digital organism, to transform biology from a descriptive science into an engineering discipline.',
         'vision-pioneering': 'My vision was ahead of its time. When I first proposed the integration of biosensors into wireless networks and control via expert systems in the late 2000s, these ideas were met with skepticism. Today, these concepts are recognized as essential for precision agriculture, environmental monitoring, and digital biology. My early work on portable fluorimetry (2006–2008) and distributed sensor networks (2013–2016) laid the foundation for a research direction that has been developing at the V.M. Glushkov Institute of Cybernetics for almost two decades. The global network for automatic knowledge taking (UA 89025, 2014) was the first step toward what I now develop as cognitive AI architectures. This continuity of thought reflects my long-term commitment to building intelligent systems that truly understand and model complex biological and cognitive processes.',
-        'contrib-title': 'Key Scientific Contributions',
-        'contrib-1': '<strong>Portable Fluorometer “Floratest”</strong> – first portable chlorophyll fluorescence device for vineyard stress diagnostics',
-        'contrib-2': '<strong>Patent UA 86679</strong> – method for plant species identification using spectral data & machine learning',
-        'contrib-3': '<strong>STCU Project #5219</strong> (PI) – wireless intelligent biosensors for precision agriculture',
-        'contrib-4': '<strong>STCU Project #6064</strong> (PI) – distributed smart sensor network for environmental monitoring',
-        'contrib-5': '<strong>Methodological Framework</strong> for information system design in crop production <span class="tag">2022</span>',
-        'contrib-6': '<strong>AI in behavioural studies</strong> – AI‑driven analysis of rodent addiction models <span class="tag">ProfIT AI 2024</span>',
-        'contrib-7': '<strong>Synthesis of AI & sensors</strong> in behavioural research <span class="tag">IJ ITA 2025</span>',
-        'contrib-8': '<strong>Cognitive Interaction Layers</strong> – novel neuro‑symbolic AI framework <span class="tag">2025</span>',
-        'contrib-9': '<strong>Digital Organism</strong> – a unifying model for AGI <span class="tag">Preprints 2025</span>',
-        'contrib-10': '<strong>Abstract Biology</strong> – relational framework for controlled biology <span class="tag">Preprints 2025</span>',
         'awards-title': 'Awards & Honours',
         'award-1': 'NASU Award for Young Scientists (2007)',
         'award-2': 'NASU Young Scientist Research Prize (2013)',
         'award-3': 'First Prize, <a href="https://kpi.ua/en/13-10-17" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">II All-Ukrainian Festival of Innovation Projects "Sikorsky Challenge 2013"</a> — project "Intelligent Sensor Technologies for Express Diagnostics of Agricultural Crops"',
         'award-4': 'Scholarships of the Cabinet of Ministers and President of Ukraine',
         'award-5': '<a href="https://nasplib.isofts.kiev.ua/server/api/core/bitstreams/bbca14f3-6486-4651-b7e5-399bc7c8e80e/content" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);"><strong>Winner of the All-Ukrainian competition "Invention – 2008"</strong> (Odesa region)</a>',
-        'patents-title': 'Patents (6)',
+        'patents-title': 'Patents',
         'patent-1': 'Global network for automatic knowledge taking (UA 89025, 2014)',
         'patent-2': 'Method for identifying plant species (UA 86679, 2014)',
         'patent-3': 'Information method for logistics support (UA 86759, 2014)',
         'patent-4': 'Method of reducing unproductive consumption of soil moisture (UA 27131, 2007)',
         'patent-5': 'Method of determining physiological state of plants (UA 24908, 2007)',
         'patent-6': 'Process of determining drought resistance of plants (UA 20131, 2007)',
+        'books-title': 'Books',
+        'book-prisma-title': 'PRISMA Comic Guide',
+        'book-prisma-description': 'A visual introduction to the PRISMA framework for systematic reviews and evidence synthesis.',
+        'books-link': 'Explore all books →',
         'pubs-title': 'Selected Publications',
         'pub-1': '<strong>Babenko Y.</strong> Trends and innovations in modern agriculture: from fluorescent sensors to decision support systems. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a> <a href="presentation.html" target="_blank" class="presentation-btn">▶ Presentation</a>',
         'pub-2': '<strong>Babenko Y., Romanov V.</strong> Cognitive Interaction Layers for Neuro-Symbolic AI. <em>ProfIT AI 2025</em>, Liverpool, UK. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a>',
@@ -833,39 +871,32 @@ const translations = {
         'phone': '+420 ... (upon request)',
         'initiatives-links-title': 'International Research Initiatives',
         'pdf-btn': 'Save page as PDF',
-        footer: '© 2026 Yevheniia Babenko – Built for ERC Advanced Grant'
+        footer: '© 2026 Academic website of Dr. Yevheniia Babenko'
     },
     uk: {
         name: 'Євгенія Бабенко',
-        title: 'Доктор філософії · Старший науковий співробітник · Кібернетика та Біологія',
-        location: 'Чехія',
-        'vision-title': 'Наукове бачення',
+        title: 'Доктор філософії · Старший науковий співробітник · Біологія та кібернетика',
+        'institute-link': 'Інститут кібернетики ім. В.М. Глушкова НАН України',
+        'vision-title': 'Дослідницька програма',
         'vision-text': 'Моя дослідницька програма спрямована на створення <strong>сильного ШІ через біологічно натхненні архітектури</strong> та забезпечення <strong>керованої, передбачуваної біології за допомогою цифрових інфраструктур</strong>. Я бачу замкнуту парадигму, де розподілені біосенсорні мережі передають дані в реальному часі до нейро-символічних систем ШІ, які, у свою чергу, моделюють і контролюють біологічні процеси — від стресових реакцій рослин до поведінки тварин. Я пропоную створити <strong>розподілену сенсорну цифрову інфраструктуру для моделювання біологічних систем</strong>, що інтегрує реляційні представлення, когнітивні шари взаємодії для нейро-символічного ШІ (Cognitive Interaction Layers for Neuro-Symbolic AI) та концепцію цифрового організму, щоб перейти від описової біології до інженерної дисципліни.',
         'vision-pioneering': 'Моє бачення випереджає свій час. Коли я вперше запропонувала інтеграцію біосенсорів до бездротових мереж та керування за рахунок експертних систем наприкінці 2000-х, ці ідеї викликали скепсис. Сьогодні ці концепції визнані невід\'ємними для точного землеробства, екологічного моніторингу та цифрової біології. Мої ранні роботи з портативної флуориметрії (2006–2008) та розподілених сенсорних мереж (2013–2016) заклали основу для наукового напрямку, який розвивається в Інституті кібернетики ім. В.М. Глушкова вже майже два десятиліття. Глобальна мережа автоматичного отримання знань (UA 89025, 2014) стала першим кроком до того, що зараз знайшло свій розвиток як архітектури когнітивного ШІ. Ця спадкоємність думки відображає мою довгострокову відданість створенню інтелектуальних систем, які дійсно розуміють і моделюють складні біологічні та когнітивні процеси.',
-        'contrib-title': 'Ключові наукові досягнення',
-        'contrib-1': '<strong>Портативний флуориметр «Floratest»</strong> – перший портативний пристрій для діагностики виноградників за флуоресценцією хлорофілу',
-        'contrib-2': '<strong>Патент UA 86679</strong> – метод ідентифікації видів рослин за спектральними даними та машинним навчанням',
-        'contrib-3': '<strong>Проєкт STCU #5219</strong> (керівник) – бездротові інтелектуальні біосенсори для точного землеробства',
-        'contrib-4': '<strong>Проєкт STCU #6064</strong> (керівник) – розподілена мережа розумних сенсорів для моніторингу довкілля',
-        'contrib-5': '<strong>Методологічні засади</strong> проєктування інформаційних систем у рослинництві <span class="tag">2022</span>',
-        'contrib-6': '<strong>ШІ в поведінкових дослідженнях</strong> – аналіз моделей залежності у гризунів <span class="tag">ProfIT AI 2024</span>',
-        'contrib-7': '<strong>Синтез ШІ та сенсорів</strong> у поведінкових дослідженнях <span class="tag">IJ ITA 2025</span>',
-        'contrib-8': '<strong>Когнітивні шари взаємодії</strong> – нова нейро-символічна архітектура ШІ <span class="tag">2025</span>',
-        'contrib-9': '<strong>Цифровий організм</strong> – уніфікована модель для AGI <span class="tag">Preprints 2025</span>',
-        'contrib-10': '<strong>Абстрактна біологія</strong> – реляційна основа для керованої біології <span class="tag">Preprints 2025</span>',
         'awards-title': 'Нагороди та відзнаки',
         'award-1': 'Премія НАН України для молодих учених (2007)',
         'award-2': 'Премія НАН України в галузі досліджень молодих учених (2013)',
         'award-3': 'Перша премія, <a href="https://kpi.ua/13-10-17" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);">II Всеукраїнський фестиваль інноваційних проектів "Sikorsky Challenge 2013"</a> — проект "Інтелектуальні сенсорні технології для експрес-діагностики сільськогосподарських культур"',
         'award-4': 'Стипендії Кабінету Міністрів та Президента України',
         'award-5': '<a href="https://nasplib.isofts.kiev.ua/server/api/core/bitstreams/bbca14f3-6486-4651-b7e5-399bc7c8e80e/content" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent);"><strong>Переможець Всеукраїнського конкурсу «Винахід – 2008»</strong> (Одеська область)</a>',
-        'patents-title': 'Патент (6)',
+        'patents-title': 'Патенти',
         'patent-1': 'Глобальна мережа автоматичного отримання знань (UA 89025, 2014)',
         'patent-2': 'Спосіб визначення виду рослин (UA 86679, 2014)',
         'patent-3': 'Спосіб інформаційного супроводу товарів та послуг (UA 86759, 2014)',
         'patent-4': 'Спосіб зменшення непродуктивної витрати вологи ґрунту на плодоносних виноградниках (UA 27131, 2007)',
         'patent-5': 'Спосіб визначення фізіологічного стану рослин методом індукції флуоресценції хлорофілу (UA 24908, 2007)',
         'patent-6': 'Процес визначення посухостійкості рослин (UA 20131, 2007)',
+        'books-title': 'Книги',
+        'book-prisma-title': 'PRISMA Comic Guide',
+        'book-prisma-description': 'Візуальний вступ до принципів PRISMA для систематичних оглядів і синтезу доказів.',
+        'books-link': 'Переглянути всі книги →',
         'pubs-title': 'Вибрані публікації',
         'pub-1': '<strong>Babenko Y.</strong> Тенденції та інновації в сучасному сільському господарстві: від флуоресцентних сенсорів до систем підтримки прийняття рішень. <em>Academia Engineering</em>, 2026. <a href="https://doi.org/10.20935/AcadEng8153" target="_blank">DOI</a> <a href="presentation.html" target="_blank" class="presentation-btn">▶ Презентація</a>',
         'pub-2': '<strong>Babenko Y., Romanov V.</strong> Когнітивні шари взаємодії для нейро-символічного ШІ. <em>ProfIT AI 2025</em>, Ліверпуль, Велика Британія. <a href="https://ceur-ws.org/Vol-4164/short5.pdf" target="_blank">PDF</a>',
@@ -914,7 +945,7 @@ const knowledgeBase = [
     {
         keywords_uk: ['привіт', 'вітаю', 'добрий день', 'здоров'],
         keywords_en: ['hello', 'hi', 'hey'],
-        // НОВОЕ ПРИВЕТСТВИЕ (ассистент)
+        // нове привітання (асистент)
         response_uk: 'Здравствуйте, вас вітає асистент Євгенії Бабенко. Я володію інформацією тільки в рамках наповнення цього сайту. Ви можете запитати про дослідження, ERC-проєкт, публікації, патенти, нагороди або контактну інформацію.',
         response_en: 'Hello, you are greeted by the assistant of Yevheniia Babenko. I have information only within the content of this site. You can ask about research, ERC project, publications, patents, awards, or contact information.'
     },
@@ -924,7 +955,7 @@ const knowledgeBase = [
         response_uk: 'Я асистент Євгенії Бабенко. Вона — доктор філософії, старший науковий співробітник Інституту кібернетики ім. В.М. Глушкова НАН України. Її дослідження поєднують кібернетику, біологію, медичну інформатику, біосенсорні системи та нейро-символічний ШІ.',
         response_en: 'I am the assistant of Yevheniia Babenko. She is a Ph.D. and Senior Research Fellow at the V.M. Glushkov Institute of Cybernetics of the NAS of Ukraine. Her research combines cybernetics, biology, medical informatics, biosensing systems, and neuro-symbolic AI.'
     },
-    // Остальные записи базы знаний (без изменений)
+    // записи баз знань 
     {
         keywords_uk: ['бачення', 'мета', 'наукове бачення', 'vision'],
         keywords_en: ['vision', 'research vision', 'goal'],
@@ -1028,7 +1059,7 @@ function getBotResponse(userText, lang) {
             : 'No exact answer was found. Please email sarahan@nas.gov.ua or evb@post.cz.';
     }
 
-    // Убираем повтор одинакового ответа
+    // прибираемо повтор 
     if (answer === lastBotResponse) {
         answer = lang === 'uk'
             ? 'Це питання вже було опрацьовано. Спробуйте уточнити тему.'
@@ -1256,10 +1287,3 @@ function setupPdf() {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
